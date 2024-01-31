@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Soy Cronómetro</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-gray-900 flex flex-col justify-center items-center h-screen">
+    <div class="text-center">
+      <div>
+        <button
+          id="increaseTimeHours"
+          class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded m-6"
+        >
+          +1h
+        </button>
+        <button
+          id="increaseTimeMinutes"
+          class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded m-6"
+        >
+          +1m
+        </button>
+        <button
+          id="increaseTimeSeconds"
+          class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded m-6"
+        >
+          +1s
+        </button>
+      </div>
+
+      <div id="display" class="text-6xl text-white font-mono relative">
+        01:00:00<span class="absolute top-0 text-sm">000</span>
+      </div>
+      <div>
+        <button
+          id="decreaseTimeHours"
+          class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded m-6"
+        >
+          -1h
+        </button>
+        <button
+          id="decreaseTimeMinutes"
+          class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded m-6"
+        >
+          -1m
+        </button>
+        <button
+          id="decreaseTimeSeconds"
+          class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded m-6"
+        >
+          -1s
+        </button>
+      </div>
+      <div>
+        <button
+          id="startStop"
+          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded m-2"
+        >
+          Iniciar
+        </button>
+        <button
+          id="reset"
+          class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded m-2"
+        >
+          Reiniciar
+        </button>
+      </div>
+
+      <div id="countdownInput" class="my-8">
+        <input
+          id="countdownHours"
+          type="number"
+          min="0"
+          class="w-24 bg-gray-200 appearance-none border-2 border-gray-200 rounded py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+          placeholder="Horas"
+        />
+        <input
+          id="countdownMinutes"
+          type="number"
+          min="0"
+          max="59"
+          class="w-24 bg-gray-200 appearance-none border-2 border-gray-200 rounded py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+          placeholder="Min"
+        />
+        <input
+          id="countdownSeconds"
+          type="number"
+          min="0"
+          max="59"
+          class="w-24 bg-gray-200 appearance-none border-2 border-gray-200 rounded py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+          placeholder="Seg"
+        />
+        <button
+          id="setCountdown"
+          class="w-full bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded m-2"
+        >
+          Establecer Cuenta Regresiva
+        </button>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
