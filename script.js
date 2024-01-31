@@ -26,7 +26,7 @@ function timeToString(time) {
   const formattedSS = ss.toString().padStart(2, '0');
   const formattedMS = ms.toString().padStart(3, '0');
 
-  return `${formattedHH}:${formattedMM}:${formattedSS}<span class="absolute top-0 text-sm">${formattedMS}</span>`;
+  return `<p>${formattedHH}:${formattedMM}:${formattedSS}<span class="absolute top-0 text-sm">${formattedMS}</span></p>`;
 }
 
 function print(txt) {
@@ -51,7 +51,7 @@ function stop() {
 
 function reset() {
   cancelAnimationFrame(timerInterval);
-  print('01:00:00<span class="absolute top-0 text-sm">000</span>');
+  print('<p>01:00:00<span class="absolute top-0 text-sm">000</span></p>');
   elapsedTime = ONE_HOUR;
   running = false;
   document.getElementById('startStop').textContent = 'Iniciar';

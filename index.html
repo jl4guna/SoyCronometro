@@ -4,10 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Soy Cronómetro</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
-      rel="stylesheet"
-    />
+    <link href="./output.css" rel="stylesheet" />
   </head>
   <body class="bg-gray-900 flex flex-col justify-center items-center h-screen">
     <div class="text-center">
@@ -33,7 +30,7 @@
       </div>
 
       <div id="display" class="text-6xl text-white font-mono relative">
-        01:00:00<span class="absolute top-0 text-sm">000</span>
+        <p>01:00:00<span class="absolute top-0 text-sm">000</span></p>
       </div>
       <div>
         <button
@@ -58,13 +55,13 @@
       <div>
         <button
           id="startStop"
-          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded m-2"
+          class="bg-rosa hover:bg-red-700 text-white font-bold py-2 px-4 rounded m-2"
         >
           Iniciar
         </button>
         <button
           id="reset"
-          class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded m-2"
+          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded m-2"
         >
           Reiniciar
         </button>
@@ -96,7 +93,7 @@
         />
         <button
           id="setCountdown"
-          class="w-full bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded m-2"
+          class="w-full bg-gray-50 hover:bg-gray-900 hover:text-gray-50 text-gray-900 font-bold py-2 px-4 rounded m-2 hover:border-gray-50 hover:border"
         >
           Establecer Cuenta Regresiva
         </button>
