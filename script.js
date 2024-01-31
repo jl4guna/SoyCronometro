@@ -26,7 +26,7 @@ function timeToString(time) {
   const formattedSS = ss.toString().padStart(2, '0');
   const formattedMS = ms.toString().padStart(3, '0');
 
-  return `<p>${formattedHH}:${formattedMM}:${formattedSS}<span class="absolute top-0 text-sm">${formattedMS}</span></p>`;
+  return `${formattedHH}:${formattedMM}:${formattedSS}<span class="!absolute top-4 right-6 text-sm">${formattedMS}</span>`;
 }
 
 function print(txt) {
@@ -51,7 +51,7 @@ function stop() {
 
 function reset() {
   cancelAnimationFrame(timerInterval);
-  print('<p>01:00:00<span class="absolute top-0 text-sm">000</span></p>');
+  print('01:00:00<span class="!absolute top-4 right-6 text-sm">000</span>');
   elapsedTime = ONE_HOUR;
   running = false;
   document.getElementById('startStop').textContent = 'Iniciar';
@@ -143,4 +143,15 @@ function addHour() {
 function subtractHour() {
   elapsedTime = Math.max(0, elapsedTime - ONE_HOUR);
   print(timeToString(elapsedTime));
+}
+
+document.getElementById('toggleTheme').addEventListener('click', toggleTheme);
+
+function toggleTheme() {
+  document.getElementsByTagName('html')[0].classList.toggle('dark');
+  document.getElementById('toggleTheme').textContent = document
+    .getElementsByTagName('html')[0]
+    .classList.contains('dark')
+    ? 'Modo Claro'
+    : 'Modo Oscuro';
 }

@@ -1,12 +1,24 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Soy Cronómetro</title>
     <link href="./output.css" rel="stylesheet" />
   </head>
-  <body class="bg-gray-900 flex flex-col justify-center items-center h-screen">
+  <body
+    class="bg-white dark:bg-gray-900 flex flex-col justify-center items-center h-screen"
+  >
+    <!-- Add button on top right to swith between light and dark mode -->
+    <div class="absolute top-0 right-0 m-4">
+      <button
+        id="toggleTheme"
+        class="bg-gray-50 hover:bg-gray-900 hover:text-gray-50 text-gray-900 font-bold py-2 px-4 rounded m-2 hover:border-gray-50 hover:border"
+      >
+        Modo Oscuro
+      </button>
+    </div>
+
     <div class="text-center">
       <div>
         <button
@@ -29,8 +41,16 @@
         </button>
       </div>
 
-      <div id="display" class="text-6xl text-white font-mono relative">
-        <p>01:00:00<span class="absolute top-0 text-sm">000</span></p>
+      <div
+        class="text-6xl text-white font-mono relative flex justify-center items-center"
+      >
+        <p
+          id="display"
+          class="w-96 h-24 bg-rosa rounded-lg m-6 relative flex justify-center items-center"
+        >
+          01:00:00
+          <span class="!absolute top-4 right-6 text-sm">000</span>
+        </p>
       </div>
       <div>
         <button
