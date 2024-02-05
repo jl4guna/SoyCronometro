@@ -26,7 +26,7 @@ function timeToString(time) {
   const formattedSS = ss.toString().padStart(2, '0');
   const formattedMS = ms.toString().padStart(3, '0');
 
-  return `${formattedHH}:${formattedMM}:${formattedSS}<span class="!absolute top-4 right-6 text-sm">${formattedMS}</span>`;
+  return `${formattedHH} : ${formattedMM} : ${formattedSS}<span class="!absolute top-4 right-6 text-sm">${formattedMS}</span>`;
 }
 
 function print(txt) {
@@ -51,7 +51,7 @@ function stop() {
 
 function reset() {
   cancelAnimationFrame(timerInterval);
-  print('01:00:00<span class="!absolute top-4 right-6 text-sm">000</span>');
+  print('01 : 00 : 00<span class="!absolute top-4 right-6 text-sm">000</span>');
   elapsedTime = ONE_HOUR;
   running = false;
   document.getElementById('startStop').textContent = 'Iniciar';
@@ -114,6 +114,43 @@ document
   .getElementById('decreaseTimeHours')
   .addEventListener('click', subtractHour);
 
+document
+  .getElementById('sesion-selector')
+  .addEventListener('change', changeSession());
+
+function changeSession() {
+  return function () {
+    running = false;
+    let selectedValue = this.value;
+    switch (selectedValue) {
+      case 'FP':
+        elapsedTime = ONE_HOUR;
+        print(
+          '01 : 00 : 00<span class="!absolute top-4 right-6 text-sm">000</span>'
+        );
+        break;
+      case 'Q1':
+        elapsedTime = 18 * ONE_MINUTE;
+        print(
+          '00 : 18 : 00<span class="!absolute top-4 right-6 text-sm">000</span>'
+        );
+        break;
+      case 'Q2':
+        elapsedTime = 15 * ONE_MINUTE;
+        print(
+          '00 : 15 : 00<span class="!absolute top-4 right-6 text-sm">000</span>'
+        );
+        break;
+      case 'Q3':
+        elapsedTime = 12 * ONE_MINUTE;
+        print(
+          '00 : 12 : 00<span class="!absolute top-4 right-6 text-sm">000</span>'
+        );
+        break;
+    }
+  };
+}
+
 // Functions for listeners
 function addSecond() {
   elapsedTime += ONE_SECOND + 1;
@@ -145,13 +182,11 @@ function subtractHour() {
   print(timeToString(elapsedTime));
 }
 
-document.getElementById('toggleTheme').addEventListener('click', toggleTheme);
+// Add on click for elements with class toggleTheme
+document.querySelectorAll('.toggleTheme').forEach((el) => {
+  el.addEventListener('click', toggleTheme);
+});
 
 function toggleTheme() {
   document.getElementsByTagName('html')[0].classList.toggle('dark');
-  document.getElementById('toggleTheme').textContent = document
-    .getElementsByTagName('html')[0]
-    .classList.contains('dark')
-    ? 'Modo Claro'
-    : 'Modo Oscuro';
 }

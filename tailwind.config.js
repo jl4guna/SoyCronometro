@@ -6,7 +6,8 @@ module.exports = {
     extend: {
       colors: {
         rosa: '#f80046',
-        negro: '#252525',
+        negro: '#111827',
+        blanco: '#F4F4F9',
       },
     },
   },
