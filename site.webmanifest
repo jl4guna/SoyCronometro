@@ -1,6 +1,10 @@
 {
   "name": "SoyCronómetro",
   "short_name": "SoyCronó",
+  "start_url": "/",
+  "scope": "/",
+  "description": "Un cronómetro simple para sesiones de Formula 1",
+  "lang": "es",
   "icons": [
     {
       "src": "/android-chrome-192x192.png",
