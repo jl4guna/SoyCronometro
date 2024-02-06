@@ -8,15 +8,55 @@ let timerInterval;
 let running = false;
 let countdownMode = true;
 
+// Selectors
+const startButton = document.getElementById('start');
+const resetButton = document.getElementById('reset');
+const stopButton = document.getElementById('stop');
+const continueButton = document.getElementById('continue');
+const setCountdownButton = document.getElementById('setCountdown');
+const increaseTimeSecondsButton = document.getElementById(
+  'increaseTimeSeconds'
+);
+const decreaseTimeSecondsButton = document.getElementById(
+  'decreaseTimeSeconds'
+);
+const increaseTimeMinutesButton = document.getElementById(
+  'increaseTimeMinutes'
+);
+const decreaseTimeMinutesButton = document.getElementById(
+  'decreaseTimeMinutes'
+);
+const increaseTimeHoursButton = document.getElementById('increaseTimeHours');
+const decreaseTimeHoursButton = document.getElementById('decreaseTimeHours');
+const sessionSelector = document.getElementById('sesion-selector');
+const countDownHoursInput = document.getElementById('countdownHours');
+const countDownMinutesInput = document.getElementById('countdownMinutes');
+const countDownSecondsInput = document.getElementById('countdownSeconds');
+
 function timeToString(time) {
   const diffInHrs = time / ONE_HOUR;
   const hh = Math.floor(diffInHrs);
+  if (hh === 0) {
+    decreaseTimeHoursButton.disabled = true;
+  } else {
+    decreaseTimeHoursButton.disabled = false;
+  }
 
   const diffInMin = (diffInHrs - hh) * 60;
   const mm = Math.floor(diffInMin);
+  if (mm === 0 && hh === 0) {
+    decreaseTimeMinutesButton.disabled = true;
+  } else {
+    decreaseTimeMinutesButton.disabled = false;
+  }
 
   const diffInSec = (diffInMin - mm) * 60;
   const ss = Math.floor(diffInSec);
+  if (ss === 0 && mm === 0 && hh === 0) {
+    decreaseTimeSecondsButton.disabled = true;
+  } else {
+    decreaseTimeSecondsButton.disabled = false;
+  }
 
   const diffInMs = (diffInSec - ss) * 1000;
   const ms = Math.floor(diffInMs);
@@ -38,7 +78,23 @@ function start() {
     ? performance.now() + elapsedTime
     : performance.now() - elapsedTime;
   timerInterval = requestAnimationFrame(updateTimer);
+
+  changeDisableAddAndSubtractButtons();
+  startButton.classList.add('hidden');
+  stopButton.classList.remove('hidden');
+  stopButton.classList.add('flex');
+  resetButton.classList.remove('flex');
+  resetButton.classList.add('hidden');
+  continueButton.classList.remove('flex');
+  continueButton.classList.add('hidden');
   running = true;
+}
+
+function changeDisableAddAndSubtractButtons(disable = true) {
+  let buttons = document.querySelectorAll('.add-subtract-button');
+  buttons.forEach((button) => {
+    button.disabled = disable;
+  });
 }
 
 function stop() {
@@ -46,15 +102,32 @@ function stop() {
     ? startTime - performance.now()
     : performance.now() - startTime;
   cancelAnimationFrame(timerInterval);
+  changeDisableAddAndSubtractButtons(false);
   running = false;
+
+  stopButton.classList.remove('flex');
+  stopButton.classList.add('hidden');
+  resetButton.classList.remove('hidden');
+  resetButton.classList.add('flex');
+  continueButton.classList.remove('hidden');
+  continueButton.classList.add('flex');
 }
 
 function reset() {
   cancelAnimationFrame(timerInterval);
-  print('01 : 00 : 00<span class="!absolute top-4 right-6 text-sm">000</span>');
-  elapsedTime = ONE_HOUR;
+  elapsedTime = getSessionTime(sessionSelector.value);
+  print(timeToString(elapsedTime));
   running = false;
-  document.getElementById('startStop').textContent = 'Iniciar';
+  changeDisableAddAndSubtractButtons(false);
+
+  startButton.classList.remove('hidden');
+  stopButton.classList.add('hidden');
+  resetButton.classList.add('hidden');
+  continueButton.classList.add('hidden');
+  startButton.classList.add('flex');
+  continueButton.classList.remove('flex');
+  resetButton.classList.remove('flex');
+  stopButton.classList.remove('flex');
 }
 
 function updateTimer() {
@@ -66,89 +139,64 @@ function updateTimer() {
     timerInterval = requestAnimationFrame(updateTimer);
   } else if (countdownMode) {
     stop();
-    alert('Tiempo terminado!');
   }
 }
 
 function setCountdownTime() {
-  let hours = parseInt(document.getElementById('countdownHours').value) || 0;
-  let minutes =
-    parseInt(document.getElementById('countdownMinutes').value) || 0;
-  let seconds =
-    parseInt(document.getElementById('countdownSeconds').value) || 0;
+  let hours = parseInt(countDownHoursInput.value) || 0;
+  let minutes = parseInt(countDownMinutesInput.value) || 0;
+  let seconds = parseInt(countDownSecondsInput.value) || 0;
   elapsedTime = (hours * 3600 + minutes * 60 + seconds) * 1000;
   print(timeToString(elapsedTime));
   countdownMode = true;
 }
 
-document.getElementById('startStop').addEventListener('click', () => {
-  if (running) {
-    stop();
-    document.getElementById('startStop').textContent = 'Iniciar';
-  } else {
-    start();
-    document.getElementById('startStop').textContent = 'Detener';
-  }
-});
-
 // Event listeners
-document.getElementById('reset').addEventListener('click', reset);
-document.getElementById('setCountdown').addEventListener('click', () => {
+startButton.addEventListener('click', start);
+continueButton.addEventListener('click', start);
+stopButton.addEventListener('click', stop);
+resetButton.addEventListener('click', reset);
+setCountdownButton.addEventListener('click', () => {
   reset();
   setCountdownTime();
 });
-document
-  .getElementById('increaseTimeSeconds')
-  .addEventListener('click', addSecond);
-document
-  .getElementById('decreaseTimeSeconds')
-  .addEventListener('click', subtractSecond);
-document
-  .getElementById('increaseTimeMinutes')
-  .addEventListener('click', addMinute);
-document
-  .getElementById('decreaseTimeMinutes')
-  .addEventListener('click', subtractMinute);
-document.getElementById('increaseTimeHours').addEventListener('click', addHour);
-document
-  .getElementById('decreaseTimeHours')
-  .addEventListener('click', subtractHour);
+increaseTimeSecondsButton.addEventListener('click', addSecond);
+decreaseTimeSecondsButton.addEventListener('click', subtractSecond);
+increaseTimeMinutesButton.addEventListener('click', addMinute);
+decreaseTimeMinutesButton.addEventListener('click', subtractMinute);
+increaseTimeHoursButton.addEventListener('click', addHour);
+decreaseTimeHoursButton.addEventListener('click', subtractHour);
 
-document
-  .getElementById('sesion-selector')
-  .addEventListener('change', changeSession());
+sessionSelector.addEventListener('change', (e) => {
+  changeSession(e.target.value);
+});
 
-function changeSession() {
-  return function () {
-    running = false;
-    let selectedValue = this.value;
-    switch (selectedValue) {
-      case 'FP':
-        elapsedTime = ONE_HOUR;
-        print(
-          '01 : 00 : 00<span class="!absolute top-4 right-6 text-sm">000</span>'
-        );
-        break;
-      case 'Q1':
-        elapsedTime = 18 * ONE_MINUTE;
-        print(
-          '00 : 18 : 00<span class="!absolute top-4 right-6 text-sm">000</span>'
-        );
-        break;
-      case 'Q2':
-        elapsedTime = 15 * ONE_MINUTE;
-        print(
-          '00 : 15 : 00<span class="!absolute top-4 right-6 text-sm">000</span>'
-        );
-        break;
-      case 'Q3':
-        elapsedTime = 12 * ONE_MINUTE;
-        print(
-          '00 : 12 : 00<span class="!absolute top-4 right-6 text-sm">000</span>'
-        );
-        break;
-    }
-  };
+function changeSession(selectedValue) {
+  running = false;
+  elapsedTime = getSessionTime(selectedValue);
+  print(timeToString(elapsedTime));
+}
+
+function getSessionTime(selectedValue) {
+  let time = elapsedTime;
+  switch (selectedValue) {
+    case 'FP':
+      time = ONE_HOUR;
+      break;
+    case 'Q1':
+      time = 18 * ONE_MINUTE;
+      break;
+    case 'Q2':
+      time = 15 * ONE_MINUTE;
+      break;
+    case 'Q3':
+      time = 12 * ONE_MINUTE;
+      break;
+    default:
+      time = ONE_HOUR;
+      break;
+  }
+  return time;
 }
 
 // Functions for listeners
