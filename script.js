@@ -36,7 +36,7 @@ const countDownSecondsInput = document.getElementById('countdownSeconds');
 function timeToString(time) {
   const diffInHrs = time / ONE_HOUR;
   const hh = Math.floor(diffInHrs);
-  if (hh === 0) {
+  if (hh === 0 || running) {
     decreaseTimeHoursButton.disabled = true;
   } else {
     decreaseTimeHoursButton.disabled = false;
@@ -44,7 +44,7 @@ function timeToString(time) {
 
   const diffInMin = (diffInHrs - hh) * 60;
   const mm = Math.floor(diffInMin);
-  if (mm === 0 && hh === 0) {
+  if ((mm === 0 && hh === 0) || running) {
     decreaseTimeMinutesButton.disabled = true;
   } else {
     decreaseTimeMinutesButton.disabled = false;
@@ -52,7 +52,7 @@ function timeToString(time) {
 
   const diffInSec = (diffInMin - mm) * 60;
   const ss = Math.floor(diffInSec);
-  if (ss === 0 && mm === 0 && hh === 0) {
+  if ((ss === 0 && mm === 0 && hh === 0) || running) {
     decreaseTimeSecondsButton.disabled = true;
   } else {
     decreaseTimeSecondsButton.disabled = false;
