@@ -1,6 +1,17 @@
 const ONE_HOUR = 3600000;
 const ONE_MINUTE = 60000;
 const ONE_SECOND = 1000;
+const F1_SESSIONS = {
+  FP: ONE_HOUR,
+  Q1: 18 * ONE_MINUTE,
+  Q2: 15 * ONE_MINUTE,
+  Q3: 12 * ONE_MINUTE,
+  SQ1: 12 * ONE_MINUTE,
+  SQ2: 10 * ONE_MINUTE,
+  SQ3: 8 * ONE_MINUTE,
+  R: 2 * ONE_HOUR,
+  T: 4 * ONE_HOUR + 15 * ONE_MINUTE,
+};
 
 let startTime = 0;
 let elapsedTime = ONE_HOUR;
@@ -182,22 +193,8 @@ function changeSession(selectedValue) {
 
 function getSessionTime(selectedValue) {
   let time = elapsedTime;
-  switch (selectedValue) {
-    case 'FP':
-      time = ONE_HOUR;
-      break;
-    case 'Q1':
-      time = 18 * ONE_MINUTE;
-      break;
-    case 'Q2':
-      time = 15 * ONE_MINUTE;
-      break;
-    case 'Q3':
-      time = 12 * ONE_MINUTE;
-      break;
-    default:
-      time = ONE_HOUR;
-      break;
+  if (selectedValue) {
+    time = F1_SESSIONS[selectedValue];
   }
   return time;
 }
