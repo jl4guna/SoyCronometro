@@ -138,6 +138,9 @@ function updateTimer() {
   if (elapsedTime > 0) {
     timerInterval = requestAnimationFrame(updateTimer);
   } else if (countdownMode) {
+    print(
+      '<span class="motion-safe:animate-pulse">00 : 00 : 00</span><span class="!absolute top-4 right-6 text-sm">000</span>'
+    );
     stop();
   }
 }
