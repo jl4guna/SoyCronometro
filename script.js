@@ -43,31 +43,20 @@ const sessionSelector = document.getElementById('sesion-selector');
 const countDownHoursInput = document.getElementById('countdownHours');
 const countDownMinutesInput = document.getElementById('countdownMinutes');
 const countDownSecondsInput = document.getElementById('countdownSeconds');
+const displayTimeContainer = document.getElementById('display-time');
+const displayTyresContainer = document.getElementById('display-tyres');
 
 function timeToString(time) {
   const diffInHrs = time / ONE_HOUR;
   const hh = Math.floor(diffInHrs);
-  if (hh === 0 || running) {
-    decreaseTimeHoursButton.disabled = true;
-  } else {
-    decreaseTimeHoursButton.disabled = false;
-  }
 
   const diffInMin = (diffInHrs - hh) * 60;
   const mm = Math.floor(diffInMin);
-  if ((mm === 0 && hh === 0) || running) {
-    decreaseTimeMinutesButton.disabled = true;
-  } else {
-    decreaseTimeMinutesButton.disabled = false;
-  }
 
   const diffInSec = (diffInMin - mm) * 60;
   const ss = Math.floor(diffInSec);
-  if ((ss === 0 && mm === 0 && hh === 0) || running) {
-    decreaseTimeSecondsButton.disabled = true;
-  } else {
-    decreaseTimeSecondsButton.disabled = false;
-  }
+
+  disableAddAndSubtractButtons(hh, mm, ss);
 
   const diffInMs = (diffInSec - ss) * 1000;
   const ms = Math.floor(diffInMs);
@@ -78,6 +67,19 @@ function timeToString(time) {
   const formattedMS = ms.toString().padStart(3, '0');
 
   return `${formattedHH} : ${formattedMM} : ${formattedSS}<span class="!absolute top-4 right-6 text-sm">${formattedMS}</span>`;
+}
+
+function disableButton(disable, button) {
+  button.disabled = disable;
+}
+
+function disableAddAndSubtractButtons(hh, mm, ss) {
+  disableButton(hh === 0 || running, decreaseTimeHoursButton);
+  disableButton((hh === 0 && mm === 0) || running, decreaseTimeMinutesButton);
+  disableButton(
+    (hh === 0 && mm === 0 && ss === 0) || running,
+    decreaseTimeSecondsButton
+  );
 }
 
 function print(txt) {
@@ -139,6 +141,10 @@ function reset() {
   continueButton.classList.remove('flex');
   resetButton.classList.remove('flex');
   stopButton.classList.remove('flex');
+  displayTimeContainer.classList.remove('hidden');
+  displayTyresContainer.classList.add('flex');
+  displayTyresContainer.classList.remove('flex');
+  displayTyresContainer.classList.add('hidden');
 }
 
 function updateTimer() {
@@ -149,11 +155,25 @@ function updateTimer() {
   if (elapsedTime > 0) {
     timerInterval = requestAnimationFrame(updateTimer);
   } else if (countdownMode) {
-    print(
-      '<span class="motion-safe:animate-pulse">00 : 00 : 00</span><span class="!absolute top-4 right-6 text-sm">000</span>'
-    );
+    showTyres();
     stop();
+    continueButton.classList.add('hidden');
+    continueButton.classList.remove('flex');
   }
+}
+
+function showTyres(show = true) {
+  if (!show) {
+    displayTyresContainer.classList.add('hidden');
+    displayTyresContainer.classList.remove('flex');
+    displayTimeContainer.classList.remove('hidden');
+    displayTimeContainer.classList.add('flex');
+    return;
+  }
+  displayTimeContainer.classList.add('hidden');
+  displayTimeContainer.classList.remove('flex');
+  displayTyresContainer.classList.add('flex');
+  displayTyresContainer.classList.remove('hidden');
 }
 
 function setCountdownTime() {
@@ -194,7 +214,7 @@ function changeSession(selectedValue) {
 function getSessionTime(selectedValue) {
   let time = elapsedTime;
   if (selectedValue) {
-    time = F1_SESSIONS[selectedValue];
+    time = F1_SESSIONS[selectedValue] || ONE_HOUR;
   }
   return time;
 }

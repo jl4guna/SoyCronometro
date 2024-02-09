@@ -15,6 +15,9 @@ module.exports = {
         rojo: '#EB5757',
         'rojo-oscuro': '#CF3838',
       },
+      animation: {
+        'spin-slow': 'spin 2s linear infinite',
+      },
     },
   },
   plugins: [],
