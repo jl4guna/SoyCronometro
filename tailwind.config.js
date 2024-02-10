@@ -14,6 +14,8 @@ module.exports = {
         'azul-oscuro': '#2F80ED',
         rojo: '#EB5757',
         'rojo-oscuro': '#CF3838',
+        gris: '#BDBDBD',
+        'gris-oscuro': '#333333',
       },
       animation: {
         'spin-slow': 'spin 2s linear infinite',

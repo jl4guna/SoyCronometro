@@ -45,6 +45,7 @@ const countDownMinutesInput = document.getElementById('countdownMinutes');
 const countDownSecondsInput = document.getElementById('countdownSeconds');
 const displayTimeContainer = document.getElementById('display-time');
 const displayTyresContainer = document.getElementById('display-tyres');
+const countdownErrors = document.getElementById('countdownErrors');
 
 function timeToString(time) {
   const diffInHrs = time / ONE_HOUR;
@@ -113,6 +114,7 @@ function start() {
   timerInterval = requestAnimationFrame(updateTimer);
 
   changeDisableAddAndSubtractButtons();
+  setCountdownButton.disabled = true;
 
   showAndHideElements([stopButton], [startButton, resetButton, continueButton]);
 
@@ -132,6 +134,7 @@ function stop() {
     : performance.now() - startTime;
   cancelAnimationFrame(timerInterval);
   changeDisableAddAndSubtractButtons(false);
+  setCountdownButton.disabled = false;
   running = false;
 
   showAndHideElements([resetButton, continueButton], [stopButton]);
@@ -143,6 +146,7 @@ function reset() {
   print(timeToString(elapsedTime));
   running = false;
   changeDisableAddAndSubtractButtons(false);
+  setCountdownButton.disabled = false;
   showAndHideElements(
     [startButton, displayTimeContainer],
     [stopButton, resetButton, continueButton, displayTyresContainer]
@@ -173,11 +177,43 @@ function showTyres(show = true) {
   showAndHideElements([displayTyresContainer], [displayTimeContainer]);
 }
 
+function validateInput(input, min, max) {
+  let value = parseInt(input.value);
+  if (isNaN(value) || value < min || value > max) {
+    input.classList.add('border-rojo');
+    input.classList.remove('border-gris');
+    return {
+      valid: false,
+      value,
+    };
+  }
+  input.classList.remove('border-rojo');
+  input.classList.add('border-gris');
+  return {
+    valid: true,
+    value,
+  };
+}
+
+function parseValues() {
+  const hours = validateInput(countDownHoursInput, 0, 100);
+  const minutes = validateInput(countDownMinutesInput, 0, 59);
+  const seconds = validateInput(countDownSecondsInput, 0, 59);
+  return { hours, minutes, seconds };
+}
+
 function setCountdownTime() {
-  let hours = parseInt(countDownHoursInput.value) || 0;
-  let minutes = parseInt(countDownMinutesInput.value) || 0;
-  let seconds = parseInt(countDownSecondsInput.value) || 0;
-  elapsedTime = (hours * 3600 + minutes * 60 + seconds) * 1000;
+  const { hours, minutes, seconds } = parseValues();
+
+  if (!hours.valid || !minutes.valid || !seconds.valid) {
+    countdownErrors.classList.remove('hidden');
+    return;
+  }
+
+  countdownErrors.classList.add('hidden');
+
+  elapsedTime =
+    (hours.value * 3600 + minutes.value * 60 + seconds.value) * 1000;
   print(timeToString(elapsedTime));
   countdownMode = true;
 }
