@@ -73,6 +73,26 @@ function disableButton(disable, button) {
   button.disabled = disable;
 }
 
+function toggleClass(element, className, add) {
+  if (add) {
+    element.classList.add(className);
+  } else {
+    element.classList.remove(className);
+  }
+}
+
+function showAndHideElements(showList, hideList) {
+  showList.forEach((element) => {
+    toggleClass(element, 'hidden', false);
+    toggleClass(element, 'flex', true);
+  });
+
+  hideList.forEach((element) => {
+    toggleClass(element, 'hidden', true);
+    toggleClass(element, 'flex', false);
+  });
+}
+
 function disableAddAndSubtractButtons(hh, mm, ss) {
   disableButton(hh === 0 || running, decreaseTimeHoursButton);
   disableButton((hh === 0 && mm === 0) || running, decreaseTimeMinutesButton);
@@ -93,13 +113,9 @@ function start() {
   timerInterval = requestAnimationFrame(updateTimer);
 
   changeDisableAddAndSubtractButtons();
-  startButton.classList.add('hidden');
-  stopButton.classList.remove('hidden');
-  stopButton.classList.add('flex');
-  resetButton.classList.remove('flex');
-  resetButton.classList.add('hidden');
-  continueButton.classList.remove('flex');
-  continueButton.classList.add('hidden');
+
+  showAndHideElements([stopButton], [startButton, resetButton, continueButton]);
+
   running = true;
 }
 
@@ -118,12 +134,7 @@ function stop() {
   changeDisableAddAndSubtractButtons(false);
   running = false;
 
-  stopButton.classList.remove('flex');
-  stopButton.classList.add('hidden');
-  resetButton.classList.remove('hidden');
-  resetButton.classList.add('flex');
-  continueButton.classList.remove('hidden');
-  continueButton.classList.add('flex');
+  showAndHideElements([resetButton, continueButton], [stopButton]);
 }
 
 function reset() {
@@ -132,19 +143,10 @@ function reset() {
   print(timeToString(elapsedTime));
   running = false;
   changeDisableAddAndSubtractButtons(false);
-
-  startButton.classList.remove('hidden');
-  stopButton.classList.add('hidden');
-  resetButton.classList.add('hidden');
-  continueButton.classList.add('hidden');
-  startButton.classList.add('flex');
-  continueButton.classList.remove('flex');
-  resetButton.classList.remove('flex');
-  stopButton.classList.remove('flex');
-  displayTimeContainer.classList.remove('hidden');
-  displayTyresContainer.classList.add('flex');
-  displayTyresContainer.classList.remove('flex');
-  displayTyresContainer.classList.add('hidden');
+  showAndHideElements(
+    [startButton, displayTimeContainer],
+    [stopButton, resetButton, continueButton, displayTyresContainer]
+  );
 }
 
 function updateTimer() {
@@ -165,16 +167,10 @@ function updateTimer() {
 
 function showTyres(show = true) {
   if (!show) {
-    displayTyresContainer.classList.add('hidden');
-    displayTyresContainer.classList.remove('flex');
-    displayTimeContainer.classList.remove('hidden');
-    displayTimeContainer.classList.add('flex');
+    showAndHideElements([displayTimeContainer], [displayTyresContainer]);
     return;
   }
-  displayTimeContainer.classList.add('hidden');
-  displayTimeContainer.classList.remove('flex');
-  displayTyresContainer.classList.add('flex');
-  displayTyresContainer.classList.remove('hidden');
+  showAndHideElements([displayTyresContainer], [displayTimeContainer]);
 }
 
 function setCountdownTime() {
