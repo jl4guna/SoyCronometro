@@ -46,13 +46,11 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="manifest" href="/site.webmanifest" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap"
-      rel="stylesheet"
-    />
     <link href="./output.css" rel="stylesheet" />
+
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+    </style>
   </head>
   <body class="bg-blanco dark:bg-gray-900 flex flex-col items-center h-screen">
     <svg
@@ -492,6 +490,7 @@
     <div class="absolute top-0 left-0 m-2 py-2 px-4">
       <a
         href="https://github.com/jl4guna/SoyCronometro"
+        aria-label="GitHub repository"
         target="_blank"
         class="text-negro dark:text-white"
       >
@@ -508,6 +507,7 @@
 
     <div class="absolute top-0 right-0 m-2">
       <button
+        aria-label="toggle dark mode"
         class="toggleTheme text-gray-50 font-bold py-2 px-4 rounded hover:border-gray-50 hover:border"
       >
         <svg
@@ -526,6 +526,7 @@
         </svg>
       </button>
       <button
+        aria-label="toggle dark mode"
         class="toggleTheme bg-gray-50 dark:hidden hover:bg-gray-900 hover:text-gray-50 text-gray-900 font-bold py-2 px-4 rounded hover:border-gray-50 hover:border"
       >
         <svg
@@ -567,7 +568,7 @@
 
     <div class="text-center mt-8 flex flex-col items-center">
       <div class="w-96 flex justify-evenly">
-        <button id="increaseTimeHours" class="group add-subtract-button">
+        <button id="increaseTimeHours" aria-label="increase timer hours" class="group add-subtract-button">
           <svg
             width="80"
             height="61"
@@ -595,7 +596,7 @@
             />
           </svg>
         </button>
-        <button id="increaseTimeMinutes" class="group add-subtract-button">
+        <button id="increaseTimeMinutes" aria-label="increase timer minutes" class="group add-subtract-button">
           <svg
             width="80"
             height="61"
@@ -623,7 +624,7 @@
             />
           </svg>
         </button>
-        <button id="increaseTimeSeconds" class="group add-subtract-button">
+        <button id="increaseTimeSeconds" aria-label="increase timer seconds" class="group add-subtract-button">
           <svg
             width="80"
             height="61"
@@ -675,12 +676,14 @@
           <img
             class="animate-spin-slow p-1"
             width="50px"
+            height="50px"
             src="imgs/red-parentesi.webp"
             alt="soft tyres"
           />
           <img
             class="animate-spin-slow p-1"
             width="50px"
+            height="50px"
             src="imgs/red-parentesi.webp"
             alt="soft tyres"
           />
@@ -688,12 +691,14 @@
           <img
             class="animate-spin-slow p-1"
             width="50px"
+            height="50px"
             src="imgs/yellow-parentesi.webp"
             alt="medium tyres"
           />
           <img
             class="animate-spin-slow p-1"
             width="50px"
+            height="50px"
             src="imgs/yellow-parentesi.webp"
             alt="medium tyres"
           />
@@ -701,19 +706,21 @@
           <img
             class="animate-spin-slow p-1"
             width="50px"
+            height="50px"
             src="imgs/white-parentesi.webp"
             alt="hard tyres"
           />
           <img
             class="animate-spin-slow p-1"
             width="50px"
+            height="50px"
             src="imgs/white-parentesi.webp"
             alt="hard tyres"
           />
         </p>
       </div>
       <div class="w-96 flex justify-evenly">
-        <button id="decreaseTimeHours" class="group add-subtract-button">
+        <button id="decreaseTimeHours" aria-label="decrease timer hours" class="group add-subtract-button">
           <svg
             width="80"
             height="61"
@@ -735,7 +742,7 @@
             />
           </svg>
         </button>
-        <button id="decreaseTimeMinutes" class="group add-subtract-button">
+        <button id="decreaseTimeMinutes" aria-label="decrease timer minutes" class="group add-subtract-button">
           <svg
             width="80"
             height="61"
@@ -757,7 +764,7 @@
             />
           </svg>
         </button>
-        <button id="decreaseTimeSeconds" class="group add-subtract-button">
+        <button id="decreaseTimeSeconds" aria-label="decrease timer seconds" class="group add-subtract-button">
           <svg
             width="80"
             height="61"
@@ -783,6 +790,7 @@
       <div class="mt-8 w-96 flex justify-around">
         <button
           id="start"
+          aria-label="start timer"
           class="flex justify-center items-center bg-verde hover:bg-verde-oscuro text-white w-40 h-12 rounded-full font-[Roboto] font-bold"
         >
           <svg
@@ -802,6 +810,7 @@
         </button>
         <button
           id="stop"
+          aria-label="stop timer"
           class="hidden justify-center items-center bg-rojo hover:bg-rojo-oscuro text-white w-44 h-12 rounded-full font-[Roboto] font-bold"
         >
           <svg
@@ -822,6 +831,7 @@
         </button>
         <button
           id="reset"
+          aria-label="reset timer"
           class="hidden mr-4 justify-center items-center bg-azul hover:bg-azul-oscuro text-white w-44 h-12 rounded-full font-[Roboto] font-bold"
         >
           <svg
@@ -842,6 +852,7 @@
         </button>
         <button
           id="continue"
+          aria-label="resume timer"
           class="hidden justify-center items-center bg-verde hover:bg-verde-oscuro text-white w-40 h-12 rounded-full font-[Roboto] font-bold"
         >
           <svg
@@ -958,6 +969,7 @@
         </div>
         <button
           id="setCountdown"
+          aria-label="set timer countdown"
           class="w-full mt-8 bg-azul hover:bg-azul-oscuro text-white font-bold py-2 px-4 rounded-full font-[Roboto] disabled:bg-[#E0E0E0] disabled:text-gris"
         >
           Establecer Tiempo
