@@ -159,6 +159,7 @@ function updateTimer() {
     stop();
     continueButton.classList.add('hidden');
     continueButton.classList.remove('flex');
+    changeDisableAddAndSubtractButtons(true);
   }
 }
 
