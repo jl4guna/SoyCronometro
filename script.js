@@ -10,7 +10,7 @@ const F1_SESSIONS = {
   SQ2: 10 * ONE_MINUTE,
   SQ3: 8 * ONE_MINUTE,
   R: 2 * ONE_HOUR,
-  T: 4 * ONE_HOUR + 15 * ONE_MINUTE,
+  T: 4 * ONE_HOUR,
 };
 
 let startTime = 0;
