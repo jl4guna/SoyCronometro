@@ -3,121 +3,878 @@ import Layout from '../layouts/Layout.astro';
 import Card from '../components/Card.astro';
 ---
 
-<Layout title="Welcome to Astro.">
-	<main>
-		<svg
-			class="astro-a"
-			width="495"
-			height="623"
-			viewBox="0 0 495 623"
-			fill="none"
-			xmlns="http://www.w3.org/2000/svg"
-			aria-hidden="true"
-		>
-			<path
-				fill-rule="evenodd"
-				clip-rule="evenodd"
-				d="M167.19 364.254C83.4786 364.254 0 404.819 0 404.819C0 404.819 141.781 19.4876 142.087 18.7291C146.434 7.33701 153.027 0 162.289 0H332.441C341.703 0 348.574 7.33701 352.643 18.7291C352.92 19.5022 494.716 404.819 494.716 404.819C494.716 404.819 426.67 364.254 327.525 364.254L264.41 169.408C262.047 159.985 255.147 153.581 247.358 153.581C239.569 153.581 232.669 159.985 230.306 169.408L167.19 364.254ZM160.869 530.172C160.877 530.18 160.885 530.187 160.894 530.195L160.867 530.181C160.868 530.178 160.868 530.175 160.869 530.172ZM136.218 411.348C124.476 450.467 132.698 504.458 160.869 530.172C160.997 529.696 161.125 529.242 161.248 528.804C161.502 527.907 161.737 527.073 161.917 526.233C165.446 509.895 178.754 499.52 195.577 500.01C211.969 500.487 220.67 508.765 223.202 527.254C224.141 534.12 224.23 541.131 224.319 548.105C224.328 548.834 224.337 549.563 224.347 550.291C224.563 566.098 228.657 580.707 237.264 593.914C245.413 606.426 256.108 615.943 270.749 622.478C270.593 621.952 270.463 621.508 270.35 621.126C270.045 620.086 269.872 619.499 269.685 618.911C258.909 585.935 266.668 563.266 295.344 543.933C298.254 541.971 301.187 540.041 304.12 538.112C310.591 533.854 317.059 529.599 323.279 525.007C345.88 508.329 360.09 486.327 363.431 457.844C364.805 446.148 363.781 434.657 359.848 423.275C358.176 424.287 356.587 425.295 355.042 426.275C351.744 428.366 348.647 430.33 345.382 431.934C303.466 452.507 259.152 455.053 214.03 448.245C184.802 443.834 156.584 436.019 136.218 411.348Z"
-				fill="url(#paint0_linear_1805_24383)"></path>
-			<defs>
-				<linearGradient
-					id="paint0_linear_1805_24383"
-					x1="247.358"
-					y1="0"
-					x2="247.358"
-					y2="622.479"
-					gradientUnits="userSpaceOnUse"
-				>
-					<stop stop-opacity="0.9"></stop>
-					<stop offset="1" stop-opacity="0.2"></stop>
-				</linearGradient>
-			</defs>
-		</svg>
-		<h1>Welcome to <span class="text-gradient">Astro</span></h1>
-		<p class="instructions">
-			To get started, open the directory <code>src/pages</code> in your project.<br />
-			<strong>Code Challenge:</strong> Tweak the "Welcome to Astro" message above.
-		</p>
-		<ul role="list" class="link-card-grid">
-			<Card
-				href="https://docs.astro.build/"
-				title="Documentation"
-				body="Learn how Astro works and explore the official API docs."
-			/>
-			<Card
-				href="https://astro.build/integrations/"
-				title="Integrations"
-				body="Supercharge your project with new frameworks and libraries."
-			/>
-			<Card
-				href="https://astro.build/themes/"
-				title="Themes"
-				body="Explore a galaxy of community-built starter themes."
-			/>
-			<Card
-				href="https://astro.build/chat/"
-				title="Community"
-				body="Come say hi to our amazing Discord community. ❤️"
-			/>
-		</ul>
-	</main>
+<Layout title='SoyCronómetro'>
+  <main class='bg-blanco dark:bg-gray-900 flex flex-col items-center h-screen'>
+    <img
+      src='/imgs/Cronometro.svg'
+      alt='Cronómetro logo'
+      class='md:hidden w-2/5'
+    />
+    <img
+      src='/imgs/SoyCronometro.svg'
+      alt='SoyCronómetro logo'
+      class='hidden dark:hidden dark:md:hidden md:block w-3/4'
+    />
+    <img
+      src='/imgs/SoyCronometroWhite.svg'
+      alt='SoyCronómetro logo'
+      class='hidden dark:md:block w-3/4'
+    />
+    <div class='absolute top-0 left-0 m-2 py-2 px-4'>
+      <a
+        href='https://github.com/jl4guna/SoyCronometro'
+        aria-label='GitHub repository'
+        target='_blank'
+        class='text-negro dark:text-white'
+      >
+        <svg width='24' height='24' xmlns='http://www.w3.org/2000/svg'>
+          <path
+            style='transform: scale(0.24)'
+            class='fill-black dark:fill-white m-2'
+            fill-rule='evenodd'
+            d='M48.854 0C21.839 0 0 22 0 49.217c0 21.756 13.993 40.172 33.405 46.69 2.427.49 3.316-1.059 3.316-2.362 0-1.141-.08-5.052-.08-9.127-13.59 2.934-16.42-5.867-16.42-5.867-2.184-5.704-5.42-7.17-5.42-7.17-4.448-3.015.324-3.015.324-3.015 4.934.326 7.523 5.052 7.523 5.052 4.367 7.496 11.404 5.378 14.235 4.074.404-3.178 1.699-5.378 3.074-6.6-10.839-1.141-22.243-5.378-22.243-24.283 0-5.378 1.94-9.778 5.014-13.2-.485-1.222-2.184-6.275.486-13.038 0 0 4.125-1.304 13.426 5.052a46.97 46.97 0 0 1 12.214-1.63c4.125 0 8.33.571 12.213 1.63 9.302-6.356 13.427-5.052 13.427-5.052 2.67 6.763.97 11.816.485 13.038 3.155 3.422 5.015 7.822 5.015 13.2 0 18.905-11.404 23.06-22.324 24.283 1.78 1.548 3.316 4.481 3.316 9.126 0 6.6-.08 11.897-.08 13.526 0 1.304.89 2.853 3.316 2.364 19.412-6.52 33.405-24.935 33.405-46.691C97.707 22 75.788 0 48.854 0z'
+          ></path>
+        </svg>
+      </a>
+    </div>
+
+    <div class='absolute top-0 right-0 m-2'>
+      <button
+        aria-label='toggle dark mode'
+        class='toggleTheme text-gray-50 font-bold py-2 px-4 rounded hover:border-gray-50 hover:border'
+      >
+        <svg
+          xmlns='http://www.w3.org/2000/svg'
+          fill='none'
+          viewBox='0 0 24 24'
+          stroke-width='1.5'
+          stroke='currentColor'
+          class='w-6 h-6'
+        >
+          <path
+            stroke-linecap='round'
+            stroke-linejoin='round'
+            d='M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z'
+          ></path>
+        </svg>
+      </button>
+      <button
+        aria-label='toggle dark mode'
+        class='toggleTheme bg-gray-50 dark:hidden hover:bg-gray-900 hover:text-gray-50 text-gray-900 font-bold py-2 px-4 rounded hover:border-gray-50 hover:border'
+      >
+        <svg
+          xmlns='http://www.w3.org/2000/svg'
+          fill='none'
+          viewBox='0 0 24 24'
+          stroke-width='1.5'
+          stroke='currentColor'
+          class='w-6 h-6'
+        >
+          <path
+            stroke-linecap='round'
+            stroke-linejoin='round'
+            d='M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z'
+          ></path>
+        </svg>
+      </button>
+    </div>
+
+    <div id='sesion-selector-container'>
+      <label for='sesion-selector' class='sr-only'>Sesión selector</label>
+      <select
+        id='sesion-selector'
+        name='sesion-selector'
+        class='add-subtract-button mt-2 block w-full rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6 font-[Roboto]'
+      >
+        <option>Selecciona una sesión</option>
+        <option value='T'>Test de Pretemporada</option>
+        <option value='FP'>Prácticas</option>
+        <option value='Q1'>Q1</option>
+        <option value='Q2'>Q2</option>
+        <option value='Q3'>Q3</option>
+        <option value='SQ1'>SQ1</option>
+        <option value='SQ2'>SQ2</option>
+        <option value='SQ3'>SQ3</option>
+        <option value='R'>Carrera</option>
+      </select>
+    </div>
+
+    <div class='text-center mt-8 flex flex-col items-center'>
+      <div class='w-96 flex justify-evenly'>
+        <button
+          id='increaseTimeHours'
+          aria-label='increase timer hours'
+          class='group add-subtract-button'
+        >
+          <svg
+            width='80'
+            height='61'
+            viewBox='0 0 80 61'
+            fill='none'
+            xmlns='http://www.w3.org/2000/svg'
+            class='group'
+          >
+            <path
+              d='M11.2111 60L68.7889 60C73.5811 60 76.4394 54.6591 73.7812 50.6718L44.9923 7.48846C42.6174 3.92606 37.3826 3.92606 35.0077 7.48845L6.2188 50.6718C3.56059 54.6591 6.41893 60 11.2111 60Z'
+              fill='white'
+              stroke='#BDBDBD'></path>
+            <path
+              d='M40 28V48'
+              stroke-width='4'
+              stroke-linecap='round'
+              class='stroke-[#27AE60] group-hover:stroke-[#219653] group-disabled:stroke-[#C5DDCF]'
+            ></path>
+            <path
+              d='M50 38L30 38'
+              stroke-width='4'
+              stroke-linecap='round'
+              class='stroke-[#27AE60] group-hover:stroke-[#219653] group-disabled:stroke-[#C5DDCF]'
+            ></path>
+          </svg>
+        </button>
+        <button
+          id='increaseTimeMinutes'
+          aria-label='increase timer minutes'
+          class='group add-subtract-button'
+        >
+          <svg
+            width='80'
+            height='61'
+            viewBox='0 0 80 61'
+            fill='none'
+            xmlns='http://www.w3.org/2000/svg'
+            class='group'
+          >
+            <path
+              d='M11.2111 60L68.7889 60C73.5811 60 76.4394 54.6591 73.7812 50.6718L44.9923 7.48846C42.6174 3.92606 37.3826 3.92606 35.0077 7.48845L6.2188 50.6718C3.56059 54.6591 6.41893 60 11.2111 60Z'
+              fill='white'
+              stroke='#BDBDBD'></path>
+            <path
+              d='M40 28V48'
+              stroke-width='4'
+              stroke-linecap='round'
+              class='stroke-[#27AE60] group-hover:stroke-[#219653] group-disabled:stroke-[#C5DDCF]'
+            ></path>
+            <path
+              d='M50 38L30 38'
+              stroke-width='4'
+              stroke-linecap='round'
+              class='stroke-[#27AE60] group-hover:stroke-[#219653] group-disabled:stroke-[#C5DDCF]'
+            ></path>
+          </svg>
+        </button>
+        <button
+          id='increaseTimeSeconds'
+          aria-label='increase timer seconds'
+          class='group add-subtract-button'
+        >
+          <svg
+            width='80'
+            height='61'
+            viewBox='0 0 80 61'
+            fill='none'
+            xmlns='http://www.w3.org/2000/svg'
+            class='group'
+          >
+            <path
+              d='M11.2111 60L68.7889 60C73.5811 60 76.4394 54.6591 73.7812 50.6718L44.9923 7.48846C42.6174 3.92606 37.3826 3.92606 35.0077 7.48845L6.2188 50.6718C3.56059 54.6591 6.41893 60 11.2111 60Z'
+              fill='white'
+              stroke='#BDBDBD'></path>
+            <path
+              d='M40 28V48'
+              stroke-width='4'
+              stroke-linecap='round'
+              class='stroke-[#27AE60] group-hover:stroke-[#219653] group-disabled:stroke-[#C5DDCF]'
+            ></path>
+            <path
+              d='M50 38L30 38'
+              stroke-width='4'
+              stroke-linecap='round'
+              class='stroke-[#27AE60] group-hover:stroke-[#219653] group-disabled:stroke-[#C5DDCF]'
+            ></path>
+          </svg>
+        </button>
+      </div>
+
+      <div
+        id='display-time'
+        class='text-6xl my-6 text-white relative flex justify-center items-center'
+      >
+        <p
+          id='display'
+          class='w-[26rem] h-[7.5rem] bg-rosa rounded-lg relative flex justify-center items-center font-[Roboto]'
+        >
+          01 : 00 : 00
+          <span class='!absolute top-4 right-6 text-sm'>000</span>
+        </p>
+      </div>
+      <div
+        id='display-tyres'
+        class='hidden text-6xl text-white relative justify-center items-center'
+      >
+        <p
+          class='w-[26rem] h-[7.5rem] bg-rosa rounded-lg m-6 relative flex justify-center items-center font-[Roboto]'
+        >
+          <img
+            class='animate-spin-slow p-1'
+            width='50px'
+            height='50px'
+            src='imgs/red-parentesi.webp'
+            alt='soft tyres'
+          />
+          <img
+            class='animate-spin-slow p-1'
+            width='50px'
+            height='50px'
+            src='imgs/red-parentesi.webp'
+            alt='soft tyres'
+          />
+          :
+          <img
+            class='animate-spin-slow p-1'
+            width='50px'
+            height='50px'
+            src='imgs/yellow-parentesi.webp'
+            alt='medium tyres'
+          />
+          <img
+            class='animate-spin-slow p-1'
+            width='50px'
+            height='50px'
+            src='imgs/yellow-parentesi.webp'
+            alt='medium tyres'
+          />
+          :
+          <img
+            class='animate-spin-slow p-1'
+            width='50px'
+            height='50px'
+            src='imgs/white-parentesi.webp'
+            alt='hard tyres'
+          />
+          <img
+            class='animate-spin-slow p-1'
+            width='50px'
+            height='50px'
+            src='imgs/white-parentesi.webp'
+            alt='hard tyres'
+          />
+        </p>
+      </div>
+      <div class='w-96 flex justify-evenly'>
+        <button
+          id='decreaseTimeHours'
+          aria-label='decrease timer hours'
+          class='group add-subtract-button'
+        >
+          <svg
+            width='80'
+            height='61'
+            viewBox='0 0 80 61'
+            fill='none'
+            xmlns='http://www.w3.org/2000/svg'
+          >
+            <path
+              d='M68.7889 1H11.2111C6.41893 1 3.56058 6.34087 6.2188 10.3282L35.0077 53.5115C37.3826 57.0739 42.6174 57.0739 44.9923 53.5116L73.7812 10.3282C76.4394 6.34087 73.5811 1 68.7889 1Z'
+              fill='white'
+              stroke='#BDBDBD'></path>
+            <path
+              d='M50 23L30 23'
+              stroke='#EB5757'
+              stroke-width='4'
+              stroke-linecap='round'
+              class='group-disabled:stroke-[#E2BEBE] stroke=[#EB5757] group-hover:stroke-[#CF3838]'
+            ></path>
+          </svg>
+        </button>
+        <button
+          id='decreaseTimeMinutes'
+          aria-label='decrease timer minutes'
+          class='group add-subtract-button'
+        >
+          <svg
+            width='80'
+            height='61'
+            viewBox='0 0 80 61'
+            fill='none'
+            xmlns='http://www.w3.org/2000/svg'
+          >
+            <path
+              d='M68.7889 1H11.2111C6.41893 1 3.56058 6.34087 6.2188 10.3282L35.0077 53.5115C37.3826 57.0739 42.6174 57.0739 44.9923 53.5116L73.7812 10.3282C76.4394 6.34087 73.5811 1 68.7889 1Z'
+              fill='white'
+              stroke='#BDBDBD'></path>
+            <path
+              d='M50 23L30 23'
+              stroke='#EB5757'
+              stroke-width='4'
+              stroke-linecap='round'
+              class='group-disabled:stroke-[#E2BEBE] stroke=[#EB5757] group-hover:stroke-[#CF3838]'
+            ></path>
+          </svg>
+        </button>
+        <button
+          id='decreaseTimeSeconds'
+          aria-label='decrease timer seconds'
+          class='group add-subtract-button'
+        >
+          <svg
+            width='80'
+            height='61'
+            viewBox='0 0 80 61'
+            fill='none'
+            xmlns='http://www.w3.org/2000/svg'
+          >
+            <path
+              d='M68.7889 1H11.2111C6.41893 1 3.56058 6.34087 6.2188 10.3282L35.0077 53.5115C37.3826 57.0739 42.6174 57.0739 44.9923 53.5116L73.7812 10.3282C76.4394 6.34087 73.5811 1 68.7889 1Z'
+              fill='white'
+              stroke='#BDBDBD'></path>
+            <path
+              d='M50 23L30 23'
+              stroke='#EB5757'
+              stroke-width='4'
+              stroke-linecap='round'
+              class='group-disabled:stroke-[#E2BEBE] stroke=[#EB5757] group-hover:stroke-[#CF3838]'
+            ></path>
+          </svg>
+        </button>
+      </div>
+      <div class='mt-8 w-96 flex justify-around'>
+        <button
+          id='start'
+          aria-label='start timer'
+          class='flex justify-center items-center bg-verde hover:bg-verde-oscuro text-white w-40 h-12 rounded-full font-[Roboto] font-bold'
+        >
+          <svg
+            width='24'
+            height='24'
+            viewBox='0 0 24 24'
+            fill='none'
+            xmlns='http://www.w3.org/2000/svg'
+            class='mr-2'
+          >
+            <path
+              d='M17.9414 10.8086C18.4336 11.125 18.75 11.6875 18.75 12.25C18.75 12.8477 18.4336 13.4102 17.9414 13.6914L7.81641 19.8789C7.28906 20.1953 6.62109 20.2305 6.09375 19.9141C5.56641 19.6328 5.25 19.0703 5.25 18.4375V6.06251C5.25 5.46485 5.56641 4.90235 6.09375 4.6211C6.62109 4.30469 7.28906 4.30469 7.81641 4.65626L17.9414 10.8086Z'
+              fill='white'></path>
+          </svg>
+          Iniciar
+        </button>
+        <button
+          id='stop'
+          aria-label='stop timer'
+          class='hidden justify-center items-center bg-rojo hover:bg-rojo-oscuro text-white w-44 h-12 rounded-full font-[Roboto] font-bold'
+        >
+          <svg
+            width='24'
+            height='24'
+            viewBox='0 0 24 24'
+            fill='none'
+            xmlns='http://www.w3.org/2000/svg'
+            class='mr-2'
+          >
+            <path
+              d='M15.9375 5.5C16.8516 5.5 17.625 6.27344 17.625 7.1875V17.3125C17.625 18.2617 16.8516 19 15.9375 19L14.8125 18.9648C13.8633 18.9648 13.125 18.1914 13.125 17.2773V7.15234C13.125 6.23828 13.8633 5.5 14.8125 5.5H15.9375ZM9.1875 5.5C10.1016 5.5 10.875 6.27344 10.875 7.1875V17.3125C10.875 18.2617 10.1016 19 9.1875 19H8.0625C7.11328 19 6.375 18.2617 6.375 17.3125V7.1875C6.375 6.23828 7.11328 5.5 8.0625 5.5H9.1875Z'
+              fill='white'></path>
+          </svg>
+
+          Detener
+        </button>
+        <button
+          id='reset'
+          aria-label='reset timer'
+          class='hidden mr-4 justify-center items-center bg-azul hover:bg-azul-oscuro text-white w-44 h-12 rounded-full font-[Roboto] font-bold'
+        >
+          <svg
+            width='17'
+            height='17'
+            viewBox='0 0 17 17'
+            fill='none'
+            xmlns='http://www.w3.org/2000/svg'
+            class='mr-2'
+          >
+            <path
+              d='M16.875 8.25C16.875 12.6094 13.3242 16.125 9 16.125C7.27734 16.125 5.625 15.5977 4.25391 14.5781C3.76172 14.1914 3.65625 13.4883 4.04297 12.9961C4.42969 12.5039 5.13281 12.3984 5.625 12.75C6.60938 13.4883 7.76953 13.875 9 13.875C12.0938 13.875 14.625 11.3789 14.625 8.25C14.625 5.15625 12.0938 2.66015 9 2.66015C7.66406 2.66015 6.43359 3.11718 5.41406 3.92578L7.03125 5.50781C7.62891 6.10547 7.17188 7.16015 6.32812 7.16015H1.23047C0.84375 7.16015 0.5625 6.84375 0.5625 6.45703V1.35937C0.5625 0.480466 1.58203 0.0585908 2.17969 0.656247L3.83203 2.34375C5.23828 1.11328 7.06641 0.410153 9 0.410153C13.3242 0.410153 16.875 3.92578 16.875 8.25Z'
+              fill='white'></path>
+          </svg>
+
+          Reiniciar
+        </button>
+        <button
+          id='continue'
+          aria-label='resume timer'
+          class='hidden justify-center items-center bg-verde hover:bg-verde-oscuro text-white w-40 h-12 rounded-full font-[Roboto] font-bold'
+        >
+          <svg
+            width='24'
+            height='24'
+            viewBox='0 0 24 24'
+            fill='none'
+            xmlns='http://www.w3.org/2000/svg'
+            class='mr-2'
+          >
+            <path
+              d='M17.9414 10.8086C18.4336 11.125 18.75 11.6875 18.75 12.25C18.75 12.8477 18.4336 13.4102 17.9414 13.6914L7.81641 19.8789C7.28906 20.1953 6.62109 20.2305 6.09375 19.9141C5.56641 19.6328 5.25 19.0703 5.25 18.4375V6.06251C5.25 5.46485 5.56641 4.90235 6.09375 4.6211C6.62109 4.30469 7.28906 4.30469 7.81641 4.65626L17.9414 10.8086Z'
+              fill='white'></path>
+          </svg>
+          Continuar
+        </button>
+      </div>
+
+      <div id='countdownInput' class='my-8'>
+        <div class='flex justify-center items-center'>
+          <hr class='border-t border-t-gray-400 dark:border-t-gris w-20' />
+          <p
+            class='text-gray-400 dark:text-gris text-center mx-8 font-[Roboto]'
+          >
+            o personalízalo
+          </p>
+          <hr class='border-t border-t-gray-400 dark:border-t-gris w-20' />
+        </div>
+        <div class='mt-16 flex justify-evenly items-center'>
+          <input
+            id='countdownHours'
+            type='number'
+            min='0'
+            class='w-20 font-[Roboto] text-xl bg-white text-center appearance-none border border-gris rounded py-2 text-gris-oscuro leading-tight focus:outline-none focus:border-azul'
+            placeholder='Horas'
+            value='0'
+          />
+          <p class='text-gray-800 text-xl dark:text-white font-[Roboto]'>:</p>
+          <input
+            id='countdownMinutes'
+            type='number'
+            min='0'
+            max='59'
+            class='w-20 font-[Roboto] text-xl bg-white text-center appearance-none border border-gris rounded py-2 text-gris-oscuro leading-tight focus:outline-none focus:border-azul'
+            placeholder='Min'
+            value='0'
+          />
+          <p class='text-gray-800 text-xl dark:text-white font-[Roboto]'>:</p>
+          <input
+            id='countdownSeconds'
+            type='number'
+            min='0'
+            max='59'
+            class='w-20 font-[Roboto] text-xl bg-white text-center appearance-none border border-gris rounded py-2 text-gris-oscuro leading-tight focus:outline-none focus:border-azul'
+            placeholder='Seg'
+            value='0'
+          />
+        </div>
+        <div id='countdownErrors' class='hidden'>
+          <ul class='appearance-none text-left mt-4'>
+            <li class='text-rojo font-[Roboto] flex items-center'>
+              <svg
+                xmlns='http://www.w3.org/2000/svg'
+                viewBox='0 0 24 24'
+                fill='currentColor'
+                class='w-6 h-6 mr-2'
+              >
+                <path
+                  fill-rule='evenodd'
+                  d='M9.401 3.003c1.155-2 4.043-2 5.197 0l7.355 12.748c1.154 2-.29 4.5-2.599 4.5H4.645c-2.309 0-3.752-2.5-2.598-4.5L9.4 3.003ZM12 8.25a.75.75 0 0 1 .75.75v3.75a.75.75 0 0 1-1.5 0V9a.75.75 0 0 1 .75-.75Zm0 8.25a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z'
+                  clip-rule='evenodd'></path>
+              </svg>
+              No puede ser mayor a 59
+            </li>
+            <li class='text-rojo font-[Roboto] flex items-center'>
+              <svg
+                xmlns='http://www.w3.org/2000/svg'
+                viewBox='0 0 24 24'
+                fill='currentColor'
+                class='w-6 h-6 mr-2'
+              >
+                <path
+                  fill-rule='evenodd'
+                  d='M9.401 3.003c1.155-2 4.043-2 5.197 0l7.355 12.748c1.154 2-.29 4.5-2.599 4.5H4.645c-2.309 0-3.752-2.5-2.598-4.5L9.4 3.003ZM12 8.25a.75.75 0 0 1 .75.75v3.75a.75.75 0 0 1-1.5 0V9a.75.75 0 0 1 .75-.75Zm0 8.25a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z'
+                  clip-rule='evenodd'></path>
+              </svg>
+              No puede ser menor a 0
+            </li>
+            <li class='text-rojo font-[Roboto] flex items-center'>
+              <svg
+                xmlns='http://www.w3.org/2000/svg'
+                viewBox='0 0 24 24'
+                fill='currentColor'
+                class='w-6 h-6 mr-2'
+              >
+                <path
+                  fill-rule='evenodd'
+                  d='M9.401 3.003c1.155-2 4.043-2 5.197 0l7.355 12.748c1.154 2-.29 4.5-2.599 4.5H4.645c-2.309 0-3.752-2.5-2.598-4.5L9.4 3.003ZM12 8.25a.75.75 0 0 1 .75.75v3.75a.75.75 0 0 1-1.5 0V9a.75.75 0 0 1 .75-.75Zm0 8.25a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z'
+                  clip-rule='evenodd'></path>
+              </svg>
+              Deben ser números enteros
+            </li>
+          </ul>
+        </div>
+        <button
+          id='setCountdown'
+          aria-label='set timer countdown'
+          class='w-full mt-8 bg-azul hover:bg-azul-oscuro text-white font-bold py-2 px-4 rounded-full font-[Roboto] disabled:bg-[#E0E0E0] disabled:text-gris'
+        >
+          Establecer Tiempo
+        </button>
+      </div>
+    </div>
+    <footer class='w-full pt-8 text-center text-gray-50'>
+      <p class='text-xs text-negro dark:text-white'>
+        Hecho con
+        <svg
+          xmlns='http://www.w3.org/2000/svg'
+          viewBox='0 0 24 24'
+          fill='currentColor'
+          class='w-6 h-6 inline-block mx-1 text-rosa'
+        >
+          <path
+            d='m11.645 20.91-.007-.003-.022-.012a15.247 15.247 0 0 1-.383-.218 25.18 25.18 0 0 1-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0 1 12 5.052 5.5 5.5 0 0 1 16.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 0 1-4.244 3.17 15.247 15.247 0 0 1-.383.219l-.022.012-.007.004-.003.001a.752.752 0 0 1-.704 0l-.003-.001Z'
+          ></path>
+        </svg>
+
+        por
+        <a
+          href='https://twitter.com/jl4guna'
+          class='hover:text-rosa font-bold'
+          target='_blank'
+          rel='noopener noreferrer'>@jl4guna</a
+        >
+
+        &
+
+        <a
+          href='https://dribbble.com/elisa-larrondo'
+          class='hover:text-rosa font-bold'
+          target='_blank'
+          rel='noopener noreferrer'>@elisa_larrondo</a
+        >
+      </p>
+    </footer>
+  </main>
 </Layout>
 
-<style>
-	main {
-		margin: auto;
-		padding: 1rem;
-		width: 800px;
-		max-width: calc(100% - 2rem);
-		color: white;
-		font-size: 20px;
-		line-height: 1.6;
-	}
-	.astro-a {
-		position: absolute;
-		top: -32px;
-		left: 50%;
-		transform: translatex(-50%);
-		width: 220px;
-		height: auto;
-		z-index: -1;
-	}
-	h1 {
-		font-size: 4rem;
-		font-weight: 700;
-		line-height: 1;
-		text-align: center;
-		margin-bottom: 1em;
-	}
-	.text-gradient {
-		background-image: var(--accent-gradient);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-size: 400%;
-		background-position: 0%;
-	}
-	.instructions {
-		margin-bottom: 2rem;
-		border: 1px solid rgba(var(--accent-light), 25%);
-		background: linear-gradient(rgba(var(--accent-dark), 66%), rgba(var(--accent-dark), 33%));
-		padding: 1.5rem;
-		border-radius: 8px;
-	}
-	.instructions code {
-		font-size: 0.8em;
-		font-weight: bold;
-		background: rgba(var(--accent-light), 12%);
-		color: rgb(var(--accent-light));
-		border-radius: 4px;
-		padding: 0.3em 0.4em;
-	}
-	.instructions strong {
-		color: rgb(var(--accent-light));
-	}
-	.link-card-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
-		gap: 2rem;
-		padding: 0;
-	}
-</style>
+<script>
+  const ONE_HOUR = 3600000;
+  const ONE_MINUTE = 60000;
+  const ONE_SECOND = 1000;
+  const F1_SESSIONS = {
+    FP: ONE_HOUR,
+    Q1: 18 * ONE_MINUTE,
+    Q2: 15 * ONE_MINUTE,
+    Q3: 12 * ONE_MINUTE,
+    SQ1: 12 * ONE_MINUTE,
+    SQ2: 10 * ONE_MINUTE,
+    SQ3: 8 * ONE_MINUTE,
+    R: 2 * ONE_HOUR,
+    T: 4 * ONE_HOUR,
+  };
+
+  let startTime = 0;
+  let elapsedTime = ONE_HOUR;
+  let timerInterval: number;
+  let running = false;
+  let countdownMode = true;
+
+  // Selectors
+  const startButton = document.getElementById('start') as HTMLButtonElement;
+  const resetButton = document.getElementById('reset') as HTMLButtonElement;
+  const stopButton = document.getElementById('stop') as HTMLButtonElement;
+  const continueButton = document.getElementById(
+    'continue'
+  ) as HTMLButtonElement;
+  const setCountdownButton = document.getElementById(
+    'setCountdown'
+  ) as HTMLButtonElement;
+  const increaseTimeSecondsButton = document.getElementById(
+    'increaseTimeSeconds'
+  ) as HTMLButtonElement;
+  const decreaseTimeSecondsButton = document.getElementById(
+    'decreaseTimeSeconds'
+  ) as HTMLButtonElement;
+  const increaseTimeMinutesButton = document.getElementById(
+    'increaseTimeMinutes'
+  ) as HTMLButtonElement;
+  const decreaseTimeMinutesButton = document.getElementById(
+    'decreaseTimeMinutes'
+  ) as HTMLButtonElement;
+  const increaseTimeHoursButton = document.getElementById(
+    'increaseTimeHours'
+  ) as HTMLButtonElement;
+  const decreaseTimeHoursButton = document.getElementById(
+    'decreaseTimeHours'
+  ) as HTMLButtonElement;
+  const sessionSelector = document.getElementById(
+    'sesion-selector'
+  ) as HTMLSelectElement;
+  const countDownHoursInput = document.getElementById(
+    'countdownHours'
+  ) as HTMLInputElement;
+  const countDownMinutesInput = document.getElementById(
+    'countdownMinutes'
+  ) as HTMLInputElement;
+  const countDownSecondsInput = document.getElementById(
+    'countdownSeconds'
+  ) as HTMLInputElement;
+  const display = document.getElementById('display') as HTMLElement;
+  const displayTimeContainer = document.getElementById(
+    'display-time'
+  ) as HTMLElement;
+  const displayTyresContainer = document.getElementById(
+    'display-tyres'
+  ) as HTMLElement;
+  const countdownErrors = document.getElementById(
+    'countdownErrors'
+  ) as HTMLElement;
+
+  function timeToString(time: number) {
+    const diffInHrs = time / ONE_HOUR;
+    const hh = Math.floor(diffInHrs);
+
+    const diffInMin = (diffInHrs - hh) * 60;
+    const mm = Math.floor(diffInMin);
+
+    const diffInSec = (diffInMin - mm) * 60;
+    const ss = Math.floor(diffInSec);
+
+    disableAddAndSubtractButtons(hh, mm, ss);
+
+    const diffInMs = (diffInSec - ss) * 1000;
+    const ms = Math.floor(diffInMs);
+
+    const formattedHH = hh.toString().padStart(2, '0');
+    const formattedMM = mm.toString().padStart(2, '0');
+    const formattedSS = ss.toString().padStart(2, '0');
+    const formattedMS = ms.toString().padStart(3, '0');
+
+    return `${formattedHH} : ${formattedMM} : ${formattedSS}<span class="!absolute top-4 right-6 text-sm">${formattedMS}</span>`;
+  }
+
+  function disableButton(disable: boolean, button: HTMLButtonElement) {
+    button.disabled = disable;
+  }
+
+  function toggleClass(element: HTMLElement, className: string, add: boolean) {
+    if (add) {
+      element.classList.add(className);
+    } else {
+      element.classList.remove(className);
+    }
+  }
+
+  function showAndHideElements(
+    showList: HTMLElement[],
+    hideList: HTMLElement[]
+  ) {
+    showList.forEach((element) => {
+      toggleClass(element, 'hidden', false);
+      toggleClass(element, 'flex', true);
+    });
+
+    hideList.forEach((element) => {
+      toggleClass(element, 'hidden', true);
+      toggleClass(element, 'flex', false);
+    });
+  }
+
+  function disableAddAndSubtractButtons(hh: number, mm: number, ss: number) {
+    disableButton(hh === 0 || running, decreaseTimeHoursButton);
+    disableButton((hh === 0 && mm === 0) || running, decreaseTimeMinutesButton);
+    disableButton(
+      (hh === 0 && mm === 0 && ss === 0) || running,
+      decreaseTimeSecondsButton
+    );
+  }
+
+  function print(txt: string) {
+    if (display) display.innerHTML = txt;
+  }
+
+  function start() {
+    startTime = countdownMode
+      ? performance.now() + elapsedTime
+      : performance.now() - elapsedTime;
+    timerInterval = requestAnimationFrame(updateTimer);
+
+    changeDisableAddAndSubtractButtons();
+    setCountdownButton.disabled = true;
+
+    showAndHideElements(
+      [stopButton],
+      [startButton, resetButton, continueButton]
+    );
+
+    running = true;
+  }
+
+  function changeDisableAddAndSubtractButtons(disable = true) {
+    let buttons = document.querySelectorAll(
+      '.add-subtract-button'
+    ) as NodeListOf<HTMLButtonElement>;
+    buttons.forEach((button) => {
+      button.disabled = disable;
+    });
+  }
+
+  function stop() {
+    elapsedTime = countdownMode
+      ? startTime - performance.now()
+      : performance.now() - startTime;
+    cancelAnimationFrame(timerInterval);
+    changeDisableAddAndSubtractButtons(false);
+    setCountdownButton.disabled = false;
+    running = false;
+
+    showAndHideElements([resetButton, continueButton], [stopButton]);
+  }
+
+  function reset() {
+    cancelAnimationFrame(timerInterval);
+    elapsedTime = getSessionTime(
+      sessionSelector.value as keyof typeof F1_SESSIONS
+    );
+    print(timeToString(elapsedTime));
+    running = false;
+    changeDisableAddAndSubtractButtons(false);
+    setCountdownButton.disabled = false;
+    showAndHideElements(
+      [startButton, displayTimeContainer],
+      [stopButton, resetButton, continueButton, displayTyresContainer]
+    );
+  }
+
+  function updateTimer() {
+    let now = performance.now();
+    let timeElapsed = countdownMode ? startTime - now : now - startTime;
+    elapsedTime = Math.max(0, timeElapsed);
+    print(timeToString(elapsedTime));
+    if (elapsedTime > 0) {
+      timerInterval = requestAnimationFrame(updateTimer);
+    } else if (countdownMode) {
+      showTyres();
+      stop();
+      continueButton.classList.add('hidden');
+      continueButton.classList.remove('flex');
+      changeDisableAddAndSubtractButtons(true);
+    }
+  }
+
+  function showTyres(show = true) {
+    if (!show) {
+      showAndHideElements([displayTimeContainer], [displayTyresContainer]);
+      return;
+    }
+    showAndHideElements([displayTyresContainer], [displayTimeContainer]);
+  }
+
+  function validateInput(input: HTMLInputElement, min: number, max: number) {
+    let value = parseInt(input.value);
+    if (isNaN(value) || value < min || value > max) {
+      input.classList.add('border-rojo');
+      input.classList.remove('border-gris');
+      return {
+        valid: false,
+        value,
+      };
+    }
+    input.classList.remove('border-rojo');
+    input.classList.add('border-gris');
+    return {
+      valid: true,
+      value,
+    };
+  }
+
+  function parseValues() {
+    const hours = validateInput(countDownHoursInput, 0, 100);
+    const minutes = validateInput(countDownMinutesInput, 0, 59);
+    const seconds = validateInput(countDownSecondsInput, 0, 59);
+    return { hours, minutes, seconds };
+  }
+
+  function setCountdownTime() {
+    const { hours, minutes, seconds } = parseValues();
+
+    if (!hours.valid || !minutes.valid || !seconds.valid) {
+      countdownErrors.classList.remove('hidden');
+      return;
+    }
+
+    countdownErrors.classList.add('hidden');
+
+    elapsedTime =
+      (hours.value * 3600 + minutes.value * 60 + seconds.value) * 1000;
+    print(timeToString(elapsedTime));
+    countdownMode = true;
+  }
+
+  // Event listeners
+  startButton.addEventListener('click', start);
+  continueButton.addEventListener('click', start);
+  stopButton.addEventListener('click', stop);
+  resetButton.addEventListener('click', reset);
+  setCountdownButton.addEventListener('click', () => {
+    reset();
+    setCountdownTime();
+  });
+  increaseTimeSecondsButton.addEventListener('click', addSecond);
+  decreaseTimeSecondsButton.addEventListener('click', subtractSecond);
+  increaseTimeMinutesButton.addEventListener('click', addMinute);
+  decreaseTimeMinutesButton.addEventListener('click', subtractMinute);
+  increaseTimeHoursButton.addEventListener('click', addHour);
+  decreaseTimeHoursButton.addEventListener('click', subtractHour);
+
+  sessionSelector.addEventListener('change', (e) => {
+    const selectedValue = e.target as HTMLSelectElement;
+    changeSession(selectedValue.value as keyof typeof F1_SESSIONS);
+  });
+
+  function changeSession(selectedValue: keyof typeof F1_SESSIONS) {
+    running = false;
+    elapsedTime = getSessionTime(selectedValue);
+    print(timeToString(elapsedTime));
+  }
+
+  function getSessionTime(selectedValue: keyof typeof F1_SESSIONS) {
+    let time = elapsedTime;
+    if (selectedValue) {
+      time = F1_SESSIONS[selectedValue] || ONE_HOUR;
+    }
+    return time;
+  }
+
+  // Functions for listeners
+  function addSecond() {
+    elapsedTime += ONE_SECOND + 1;
+    print(timeToString(elapsedTime));
+  }
+
+  function subtractSecond() {
+    elapsedTime = Math.max(0, elapsedTime - ONE_SECOND);
+    print(timeToString(elapsedTime));
+  }
+
+  function addMinute() {
+    elapsedTime += ONE_MINUTE + 1;
+    print(timeToString(elapsedTime));
+  }
+
+  function subtractMinute() {
+    elapsedTime = Math.max(0, elapsedTime - ONE_MINUTE);
+    print(timeToString(elapsedTime));
+  }
+
+  function addHour() {
+    elapsedTime += ONE_HOUR + 1;
+    print(timeToString(elapsedTime));
+  }
+
+  function subtractHour() {
+    elapsedTime = Math.max(0, elapsedTime - ONE_HOUR);
+    print(timeToString(elapsedTime));
+  }
+
+  // Add on click for elements with class toggleTheme
+  document.querySelectorAll('.toggleTheme').forEach((el) => {
+    el.addEventListener('click', toggleTheme);
+  });
+
+  function toggleTheme() {
+    document.getElementsByTagName('html')[0].classList.toggle('dark');
+  }
+</script>
