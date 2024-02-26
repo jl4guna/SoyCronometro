@@ -1,0 +1,92 @@
+<div id='countdownInput' class='my-8'>
+  <div class='flex justify-center items-center'>
+    <hr class='border-t border-t-gray-400 dark:border-t-gris w-20' />
+    <p class='text-gray-400 dark:text-gris text-center mx-8 font-[Roboto]'>
+      o personalízalo
+    </p>
+    <hr class='border-t border-t-gray-400 dark:border-t-gris w-20' />
+  </div>
+  <div class='mt-16 flex justify-evenly items-center'>
+    <input
+      id='countdownHours'
+      type='number'
+      min='0'
+      class='w-20 font-[Roboto] text-xl bg-white text-center appearance-none border border-gris rounded py-2 text-gris-oscuro leading-tight focus:outline-none focus:border-azul'
+      placeholder='Horas'
+      value='0'
+    />
+    <p class='text-gray-800 text-xl dark:text-white font-[Roboto]'>:</p>
+    <input
+      id='countdownMinutes'
+      type='number'
+      min='0'
+      max='59'
+      class='w-20 font-[Roboto] text-xl bg-white text-center appearance-none border border-gris rounded py-2 text-gris-oscuro leading-tight focus:outline-none focus:border-azul'
+      placeholder='Min'
+      value='0'
+    />
+    <p class='text-gray-800 text-xl dark:text-white font-[Roboto]'>:</p>
+    <input
+      id='countdownSeconds'
+      type='number'
+      min='0'
+      max='59'
+      class='w-20 font-[Roboto] text-xl bg-white text-center appearance-none border border-gris rounded py-2 text-gris-oscuro leading-tight focus:outline-none focus:border-azul'
+      placeholder='Seg'
+      value='0'
+    />
+  </div>
+  <div id='countdownErrors' class='hidden'>
+    <ul class='appearance-none text-left mt-4'>
+      <li class='text-rojo font-[Roboto] flex items-center'>
+        <svg
+          xmlns='http://www.w3.org/2000/svg'
+          viewBox='0 0 24 24'
+          fill='currentColor'
+          class='w-6 h-6 mr-2'
+        >
+          <path
+            fill-rule='evenodd'
+            d='M9.401 3.003c1.155-2 4.043-2 5.197 0l7.355 12.748c1.154 2-.29 4.5-2.599 4.5H4.645c-2.309 0-3.752-2.5-2.598-4.5L9.4 3.003ZM12 8.25a.75.75 0 0 1 .75.75v3.75a.75.75 0 0 1-1.5 0V9a.75.75 0 0 1 .75-.75Zm0 8.25a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z'
+            clip-rule='evenodd'></path>
+        </svg>
+        No puede ser mayor a 59
+      </li>
+      <li class='text-rojo font-[Roboto] flex items-center'>
+        <svg
+          xmlns='http://www.w3.org/2000/svg'
+          viewBox='0 0 24 24'
+          fill='currentColor'
+          class='w-6 h-6 mr-2'
+        >
+          <path
+            fill-rule='evenodd'
+            d='M9.401 3.003c1.155-2 4.043-2 5.197 0l7.355 12.748c1.154 2-.29 4.5-2.599 4.5H4.645c-2.309 0-3.752-2.5-2.598-4.5L9.4 3.003ZM12 8.25a.75.75 0 0 1 .75.75v3.75a.75.75 0 0 1-1.5 0V9a.75.75 0 0 1 .75-.75Zm0 8.25a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z'
+            clip-rule='evenodd'></path>
+        </svg>
+        No puede ser menor a 0
+      </li>
+      <li class='text-rojo font-[Roboto] flex items-center'>
+        <svg
+          xmlns='http://www.w3.org/2000/svg'
+          viewBox='0 0 24 24'
+          fill='currentColor'
+          class='w-6 h-6 mr-2'
+        >
+          <path
+            fill-rule='evenodd'
+            d='M9.401 3.003c1.155-2 4.043-2 5.197 0l7.355 12.748c1.154 2-.29 4.5-2.599 4.5H4.645c-2.309 0-3.752-2.5-2.598-4.5L9.4 3.003ZM12 8.25a.75.75 0 0 1 .75.75v3.75a.75.75 0 0 1-1.5 0V9a.75.75 0 0 1 .75-.75Zm0 8.25a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z'
+            clip-rule='evenodd'></path>
+        </svg>
+        Deben ser números enteros
+      </li>
+    </ul>
+  </div>
+  <button
+    id='setCountdown'
+    aria-label='set timer countdown'
+    class='w-full mt-8 bg-azul hover:bg-azul-oscuro text-white font-bold py-2 px-4 rounded-full font-[Roboto] disabled:bg-[#E0E0E0] disabled:text-gris'
+  >
+    Establecer Tiempo
+  </button>
+</div>
