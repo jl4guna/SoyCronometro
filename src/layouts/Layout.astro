@@ -63,5 +63,17 @@ const { title } = Astro.props;
   </head>
   <body class='bg-blanco dark:bg-gray-900'>
     <slot />
+    <script>
+      (function () {
+        //@ts-ignore
+        window.counterscale = {
+          q: [['set', 'siteId', 'soycronometro'], ['trackPageview']],
+        };
+      })();
+    </script>
+    <script
+      id='counterscale-script'
+      src='https://counterscale.jhonlpdev.workers.dev/tracker.js'
+      defer></script>
   </body>
 </html>
