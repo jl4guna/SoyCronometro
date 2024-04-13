@@ -21,9 +21,19 @@
   id='display-time'
   class='text-6xl my-6 text-white relative flex justify-center items-center'
 >
+  <img
+    src='imgs/cut.svg'
+    alt='cut'
+    class='hidden dark:block absolute -top-2 -left-2 w-4 h-4'
+  />
+  <img
+    src='imgs/cut-black.svg'
+    alt='cut'
+    class='dark:hidden absolute -top-2 -left-2 w-4 h-4'
+  />
   <p
     id='display'
-    class='w-[26rem] h-[7.5rem] bg-rosa rounded-lg relative flex justify-center items-center font-[Roboto]'
+    class='w-[26rem] h-[7.5rem] bg-rosa border-2 border-dashed border-gray-900 dark:border-white rounded-lg relative flex justify-center items-center font-[Roboto]'
   >
     01 : 00 : 00
     <span class='!absolute top-4 right-6 text-sm'>000</span>
