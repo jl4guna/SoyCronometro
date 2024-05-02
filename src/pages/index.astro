@@ -122,7 +122,7 @@ import Footer from '../components/Footer.astro';
     const formattedSS = ss.toString().padStart(2, '0');
     const formattedMS = ms.toString().padStart(3, '0');
 
-    return `${formattedHH} : ${formattedMM} : ${formattedSS}<span class="!absolute top-4 right-6 text-sm">${formattedMS}</span>`;
+    return `${formattedHH} : ${formattedMM} : ${formattedSS} <span id='display-time-ml' style="-webkit-text-stroke: 0; font-family: Roboto;" class="!absolute top-4 right-6 text-sm">${formattedMS}</span>`;
   }
 
   function disableButton(disable: boolean, button: HTMLButtonElement) {

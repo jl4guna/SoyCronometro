@@ -1,19 +1,14 @@
 <style>
-  #display-tyres p {
-    background-color: #fff;
+  #display-time,
+  #display-tyres {
+    /* font stroke */
+    -webkit-text-stroke: 3px black;
+  }
 
-    background-image: linear-gradient(45deg, #000 25%, transparent 25%),
-      linear-gradient(45deg, transparent 75%, #000 75%),
-      linear-gradient(45deg, transparent 75%, #000 75%),
-      linear-gradient(45deg, #000 25%, transparent 25%);
-
-    background-size: 100px 100px;
-
-    background-position:
-      0 0,
-      0 0,
-      -50px -50px,
-      50px 50px;
+  #display-time-ml {
+    /* No font stroke */
+    -webkit-text-stroke: 0;
+    font-family: Roboto;
   }
 </style>
 
@@ -23,62 +18,42 @@
 >
   <p
     id='display'
-    class='w-[26rem] h-[7.5rem] bg-rosa rounded-lg relative flex justify-center items-center font-[Roboto]'
+    class='w-[26rem] h-[7.5rem] bg-gradient-to-b from-[#2D5EDA] via-[#D44DBD] to-[#E7943F] rounded-lg relative flex justify-center items-center font-gta'
   >
     01 : 00 : 00
-    <span class='!absolute top-4 right-6 text-sm'>000</span>
+    <span id='display-time-ml' class='!absolute top-4 right-6 text-sm'>000</span
+    >
   </p>
+  <img
+    class='absolute left-0 -bottom-1 opacity-50 scale-x-[-1]'
+    width='50px'
+    height='50px'
+    src='imgs/palm.svg'
+    alt='palm trees'
+  />
 </div>
 <div
   id='display-tyres'
   class='hidden text-6xl text-white relative justify-center items-center'
 >
   <p
-    class='w-[26rem] h-[7.5rem] bg-rosa rounded-lg m-6 relative flex justify-center items-center font-[Roboto]'
+    class='w-[26rem] h-[7.5rem] bg-gradient-to-b from-[#2D5EDA] via-[#D44DBD] to-[#E7943F] rounded-lg m-6 relative flex justify-center items-center font-gta'
   >
+    <span class='animate-pulse'>wasted</span>
+
     <img
-      class='animate-spin-slow p-1'
-      width='50px'
-      height='50px'
-      src='imgs/red-parentesi.webp'
-      alt='soft tyres'
+      class='absolute left-0 bottom-0'
+      width='120px'
+      height='120px'
+      src='imgs/jorge.png'
+      alt='jorge mustache'
     />
     <img
-      class='animate-spin-slow p-1'
-      width='50px'
-      height='50px'
-      src='imgs/red-parentesi.webp'
-      alt='soft tyres'
-    />
-    :
-    <img
-      class='animate-spin-slow p-1'
-      width='50px'
-      height='50px'
-      src='imgs/yellow-parentesi.webp'
-      alt='medium tyres'
-    />
-    <img
-      class='animate-spin-slow p-1'
-      width='50px'
-      height='50px'
-      src='imgs/yellow-parentesi.webp'
-      alt='medium tyres'
-    />
-    :
-    <img
-      class='animate-spin-slow p-1'
-      width='50px'
-      height='50px'
-      src='imgs/white-parentesi.webp'
-      alt='hard tyres'
-    />
-    <img
-      class='animate-spin-slow p-1'
-      width='50px'
-      height='50px'
-      src='imgs/white-parentesi.webp'
-      alt='hard tyres'
+      class='absolute right-0 bottom-0'
+      width='110px'
+      height='110px'
+      src='imgs/tom.png'
+      alt='tomas goloso'
     />
   </p>
 </div>

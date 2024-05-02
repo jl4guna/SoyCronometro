@@ -17,6 +17,9 @@ export default {
         gris: '#BDBDBD',
         'gris-oscuro': '#333333',
       },
+      fontFamily: {
+        gta: 'Pricedown Bl',
+      },
       animation: {
         'spin-slow': 'spin 2s linear infinite',
       },
