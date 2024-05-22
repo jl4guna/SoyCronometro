@@ -1,14 +1,19 @@
 <style>
-  #display-time,
-  #display-tyres {
-    /* font stroke */
-    -webkit-text-stroke: 3px black;
-  }
+  #display-tyres p {
+    background-color: #fff;
 
-  #display-time-ml {
-    /* No font stroke */
-    -webkit-text-stroke: 0;
-    font-family: Roboto;
+    background-image: linear-gradient(45deg, #000 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, #000 75%),
+      linear-gradient(45deg, transparent 75%, #000 75%),
+      linear-gradient(45deg, #000 25%, transparent 25%);
+
+    background-size: 100px 100px;
+
+    background-position:
+      0 0,
+      0 0,
+      -50px -50px,
+      50px 50px;
   }
 </style>
 
@@ -18,35 +23,64 @@
 >
   <p
     id='display'
-    class='w-[26rem] h-[7.5rem] bg-gradient-to-b to-[#FDE155] from-[#409947] rounded-lg relative flex justify-center items-center font-gta'
+    class='w-[26rem] h-[7.5rem] bg-rosa rounded-lg relative flex justify-center items-center font-[Roboto]'
   >
     01 : 00 : 00
     <span id='display-time-ml' class='!absolute top-4 right-6 text-sm'>000</span
     >
   </p>
-  <img
-    class='absolute right-0 bottom-1'
-    width='80px'
-    height='80px'
-    src='imgs/as-sign.svg'
-    alt='Ayrton Senna Signature'
-  />
 </div>
+
 <div
   id='display-tyres'
   class='hidden text-6xl text-white relative justify-center items-center'
 >
   <p
-    class='w-[26rem] h-[7.5rem] bg-gradient-to-b to-[#FDE155] from-[#409947] rounded-lg m-6 relative flex justify-center items-center font-[Roboto]'
+    class='w-[26rem] h-[7.5rem] bg-rosa rounded-lg m-6 relative flex justify-center items-center font-[Roboto]'
   >
-    <!-- <span class='animate-pulse'>00:00:00</span> -->
-
     <img
-      class='animate-pulse'
-      width='120px'
-      height='120px'
-      src='imgs/ayrton.png'
-      alt='Ayrton Senna'
+      class='animate-spin-slow p-1'
+      width='50px'
+      height='50px'
+      src='imgs/red-parentesi.webp'
+      alt='soft tyres'
+    />
+    <img
+      class='animate-spin-slow p-1'
+      width='50px'
+      height='50px'
+      src='imgs/red-parentesi.webp'
+      alt='soft tyres'
+    />
+    :
+    <img
+      class='animate-spin-slow p-1'
+      width='50px'
+      height='50px'
+      src='imgs/yellow-parentesi.webp'
+      alt='medium tyres'
+    />
+    <img
+      class='animate-spin-slow p-1'
+      width='50px'
+      height='50px'
+      src='imgs/yellow-parentesi.webp'
+      alt='medium tyres'
+    />
+    :
+    <img
+      class='animate-spin-slow p-1'
+      width='50px'
+      height='50px'
+      src='imgs/white-parentesi.webp'
+      alt='hard tyres'
+    />
+    <img
+      class='animate-spin-slow p-1'
+      width='50px'
+      height='50px'
+      src='imgs/white-parentesi.webp'
+      alt='hard tyres'
     />
   </p>
 </div>
