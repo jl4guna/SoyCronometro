@@ -402,26 +402,31 @@ import Footer from '../components/Footer.astro';
 
   function subtractSecond() {
     elapsedTime = Math.max(0, elapsedTime - ONE_SECOND);
+    prepareToast();
     print(timeToString(elapsedTime));
   }
 
   function addMinute() {
     elapsedTime += ONE_MINUTE + 1;
+    prepareToast();
     print(timeToString(elapsedTime));
   }
 
   function subtractMinute() {
     elapsedTime = Math.max(0, elapsedTime - ONE_MINUTE);
+    prepareToast();
     print(timeToString(elapsedTime));
   }
 
   function addHour() {
     elapsedTime += ONE_HOUR + 1;
+    prepareToast();
     print(timeToString(elapsedTime));
   }
 
   function subtractHour() {
     elapsedTime = Math.max(0, elapsedTime - ONE_HOUR);
+    prepareToast();
     print(timeToString(elapsedTime));
   }
 
