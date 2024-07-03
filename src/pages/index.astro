@@ -375,6 +375,7 @@ import Footer from '../components/Footer.astro';
       toastNode.querySelector('#penalty-lastname')!.textContent =
         randomDriver.lastname;
       toastNode.querySelector('#penalty-time')!.textContent = `+${randomTime}`;
+      toastNode.querySelector('#penalty-unit')!.textContent = 'SECONDS';
     }
 
     toastNode.classList.remove('hidden');
