@@ -1,6 +1,4 @@
 ---
-import 'toastify-js/src/toastify.css';
-
 import Layout from '../layouts/Layout.astro';
 import Logo from '../components/Logo.astro';
 import FloatingButtons from '../components/FloatingButtons.astro';
@@ -29,34 +27,9 @@ import Footer from '../components/Footer.astro';
     </div>
     <Footer />
   </main>
-
-  <!-- FIA PENALTY TOAST -->
-  <div id='penalty-toast' class='-my-3 -mx-4 flex items-center hidden'>
-    <img src='/imgs/fia.png' alt='Penalty' class='w-12 h-8 mr-2 ml-2' />
-    <div class='bg-white h-full flex flex-col gap-0 p-2'>
-      <p
-        id='penalty-name'
-        class='text-md font-[Titillium Web] italic text-[#003063]'
-      >
-        Esteban
-      </p>
-      <p
-        id='penalty-lastname'
-        class='text-3xl font-[Titillium Web] italic text-[#003063]'
-      >
-        Ocon
-      </p>
-    </div>
-    <p class='text-xl p-2 text-white font-[Titillium Web] italic'>
-      <span id='penalty-time' class='text-2xl'>+10 </span>
-      <span id='penalty-unit'>SECONDS</span>
-    </p>
-  </div>
 </Layout>
 
 <script>
-  import Toastify from 'toastify-js';
-
   const ONE_HOUR = 3600000;
   const ONE_MINUTE = 60000;
   const ONE_SECOND = 1000;
@@ -149,7 +122,7 @@ import Footer from '../components/Footer.astro';
     const formattedSS = ss.toString().padStart(2, '0');
     const formattedMS = ms.toString().padStart(3, '0');
 
-    return `${formattedHH} : ${formattedMM} : ${formattedSS} <span id='display-time-ml' style="-webkit-text-stroke: 0; font-family: Roboto;" class="!absolute top-4 right-6 text-sm">${formattedMS}</span>`;
+    return `${formattedHH}:${formattedMM}:${formattedSS} <span id='display-time-ml' style="-webkit-text-stroke: 0; font-family: Ribeye;" class="!absolute top-4 right-12 text-sm">${formattedMS}</span>`;
   }
 
   function disableButton(disable: boolean, button: HTMLButtonElement) {
@@ -345,89 +318,34 @@ import Footer from '../components/Footer.astro';
     return time;
   }
 
-  function prepareToast() {
-    const DRIVERS = [
-      { name: 'Esteban', lastname: 'Ocon' },
-      { name: 'Fernando', lastname: 'Alonso' },
-      { name: 'Sergio', lastname: 'Perez' },
-      { name: 'Carlos', lastname: 'Sainz' },
-      { name: 'Kevin', lastname: 'Magnusen' },
-      { name: 'Logan', lastname: 'Sargeant' },
-    ];
-
-    const PENALTY_TIMES = [3, 5, 10, 15, 20, 30];
-
-    const randomDriver = DRIVERS[Math.floor(Math.random() * DRIVERS.length)];
-    const randomTime =
-      PENALTY_TIMES[Math.floor(Math.random() * PENALTY_TIMES.length)];
-    const toastNode = document
-      .getElementById('penalty-toast')
-      ?.cloneNode(true) as HTMLElement;
-
-    if (randomDriver.name === 'Logan') {
-      toastNode.querySelector('#penalty-name')!.textContent = randomDriver.name;
-      toastNode.querySelector('#penalty-lastname')!.textContent =
-        randomDriver.lastname;
-      toastNode.querySelector('#penalty-time')!.textContent = `-1`;
-      toastNode.querySelector('#penalty-unit')!.textContent = 'CHASSIS';
-    } else {
-      toastNode.querySelector('#penalty-name')!.textContent = randomDriver.name;
-      toastNode.querySelector('#penalty-lastname')!.textContent =
-        randomDriver.lastname;
-      toastNode.querySelector('#penalty-time')!.textContent = `+${randomTime}`;
-      toastNode.querySelector('#penalty-unit')!.textContent = 'SECONDS';
-    }
-
-    toastNode.classList.remove('hidden');
-
-    Toastify({
-      text: 'This is a toast',
-      duration: 2000,
-      className: 'penalty',
-      node: toastNode,
-      gravity: 'bottom', // `top` or `bottom`
-      position: 'right', // `left`, `center` or `right`
-      stopOnFocus: true, // Prevents dismissing of toast on hover
-      style: {
-        background: '#003063',
-      },
-    }).showToast();
-  }
-
   // Functions for listeners
   function addSecond() {
     elapsedTime += ONE_SECOND + 1;
-    prepareToast();
     print(timeToString(elapsedTime));
   }
 
   function subtractSecond() {
     elapsedTime = Math.max(0, elapsedTime - ONE_SECOND);
-    prepareToast();
     print(timeToString(elapsedTime));
   }
 
   function addMinute() {
     elapsedTime += ONE_MINUTE + 1;
-    prepareToast();
     print(timeToString(elapsedTime));
   }
 
   function subtractMinute() {
     elapsedTime = Math.max(0, elapsedTime - ONE_MINUTE);
-    prepareToast();
     print(timeToString(elapsedTime));
   }
 
   function addHour() {
     elapsedTime += ONE_HOUR + 1;
-    prepareToast();
     print(timeToString(elapsedTime));
   }
 
   function subtractHour() {
     elapsedTime = Math.max(0, elapsedTime - ONE_HOUR);
-    prepareToast();
     print(timeToString(elapsedTime));
   }
 

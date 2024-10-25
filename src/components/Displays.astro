@@ -1,44 +1,49 @@
-<style>
-  #display-tyres p {
-    background-color: #fff;
-
-    background-image: linear-gradient(45deg, #000 25%, transparent 25%),
-      linear-gradient(45deg, transparent 75%, #000 75%),
-      linear-gradient(45deg, transparent 75%, #000 75%),
-      linear-gradient(45deg, #000 25%, transparent 25%);
-
-    background-size: 100px 100px;
-
-    background-position:
-      0 0,
-      0 0,
-      -50px -50px,
-      50px 50px;
-  }
-</style>
-
 <div
   id='display-time'
-  class='text-6xl my-6 text-white relative flex justify-center items-center'
+  class='text-6xl my-6 text-white relative flex justify-center items-center bg-[#662D91] rounded-lg'
 >
   <img
-    class='absolute top-2 left-2 z-10'
-    width='40px'
-    height='40px'
-    src='imgs/fia.png'
-    alt='fia logo'
+    class='absolute top-0 z-0'
+    width='371px'
+    height='98px'
+    src='imgs/papel-picado.svg'
+    alt='papel picado'
+  />
+  <img
+    class='absolute top-0 left-0 rounded-lg'
+    src='imgs/flor-l.svg'
+    alt='flor izquierda'
+  />
+  <img
+    class='absolute top-1 right-1'
+    src='imgs/petalos-r.svg'
+    alt='petalos derecha'
+  />
+  <img
+    class='absolute bottom-0 right-0 rounded-lg'
+    src='imgs/flor-r.svg'
+    alt='flor derecha'
+  />
+  <img
+    class='absolute bottom-1 left-1'
+    src='imgs/petalos-l.svg'
+    alt='petalos izquierda'
   />
   <p
     id='display'
-    class='w-[26rem] h-[7.5rem] bg-[#003063] border-4 border-white rounded-lg relative flex justify-center items-center font-[Roboto]'
+    class='w-[26rem] h-[7.5rem] rounded-lg relative flex justify-center items-center font-[Ribeye]'
   >
-    01 : 00 : 00
-    <span id='display-time-ml' class='!absolute top-4 right-6 text-sm'>000</span
+    01:00:00
+    <span
+      id='display-time-ml'
+      class='!absolute top-4 right-12 text-sm font-[Ribeye]'>000</span
     >
   </p>
-  <span class='absolute bottom-2 text-xs text-center w-full'
-    >FIA'S HOME RACE</span
+  <span
+    class='absolute bottom-2 text-xs text-center w-full font-[Ribeye] text-[#FFC64A]'
   >
+    México GP
+  </span>
 </div>
 
 <div
@@ -46,8 +51,35 @@
   class='hidden text-6xl text-white relative justify-center items-center'
 >
   <p
-    class='w-[26rem] h-[7.5rem] bg-[#003063] rounded-lg m-6 relative flex justify-center items-center font-[Roboto]'
+    class='w-[26rem] h-[7.5rem] bg-[#662D91] rounded-lg m-6 relative flex justify-center items-center font-[Ribeye]'
   >
+    <img
+      class='absolute top-0 z-0'
+      width='371px'
+      height='98px'
+      src='imgs/papel-picado.svg'
+      alt='papel picado'
+    />
+    <img
+      class='absolute top-0 left-0 rounded-lg'
+      src='imgs/flor-l.svg'
+      alt='flor izquierda'
+    />
+    <img
+      class='absolute top-1 right-1'
+      src='imgs/petalos-r.svg'
+      alt='petalos derecha'
+    />
+    <img
+      class='absolute bottom-0 right-0 rounded-lg'
+      src='imgs/flor-r.svg'
+      alt='flor derecha'
+    />
+    <img
+      class='absolute bottom-1 left-1'
+      src='imgs/petalos-l.svg'
+      alt='petalos izquierda'
+    />
     <img
       class='animate-spin-slow p-1'
       width='50px'
